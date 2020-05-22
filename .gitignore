@@ -15,6 +15,4 @@ yarn.lock
 tslint-to-eslint-config.log
 
 # project specific
-test.js
-test.ts
 todo.md
