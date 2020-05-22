@@ -326,7 +326,7 @@ export default class Bandcamp {
   }
 
   /**
-   * Updates merch item SKUs
+   * Updates merch item stock-keeping units (SKU)
    *
    * @param {string} accessToken
    * @param {Object[]} items - array of items or item-options to update, where each array item is structured

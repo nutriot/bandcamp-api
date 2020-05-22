@@ -249,7 +249,7 @@ Updates merch items' stock quantities (inventory levels)
 
 Usage: `updateSKU(accessToken, itemsArray)`
 
-Updates merch item SKUs
+Updates merch item stock-keeping unit (SKU)
 
 <details>
 <summary><strong>Example</strong></summary>
