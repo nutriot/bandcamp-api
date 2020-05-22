@@ -15,7 +15,7 @@
 
 In order to make API calls, you need to [register](https://bandcamp.com/contact?subj=API%20Access) to get client ID and secret.
 
-**Note:** It's probably a [bad idea](https://medium.com/@benjamin.botto/secure-access-token-storage-with-single-page-applications-part-1-9536b0021321) to use this library in the front end, as your credentials will be exposed to the world in plain sight
+**Note:** It's probably a [bad idea](https://medium.com/@benjamin.botto/secure-access-token-storage-with-single-page-applications-part-1-9536b0021321) to use this library in the front end, as your credentials will be exposed to the world!
 
 ## Usage
 
