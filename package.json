@@ -1,0 +1,55 @@
+{
+  "name": "@nutriot/bandcamp-api",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nutriot/bandcamp-api.git"
+  },
+  "keywords": [
+    "bandcamp",
+    "bandcamp-api"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf ./lib && tsc --pretty --project ./",
+    "dev": "npm run start",
+    "lint": "eslint ./src",
+    "prepublishOnly": "npm run lint && npm run build",
+    "start": "tsc --watch --pretty --project ./",
+    "test": "ava ./test/*.js --serial --verbose"
+  },
+  "dependencies": {
+    "query-string": "^6.12.1"
+  },
+  "devDependencies": {
+    "@ava/typescript": "^1.1.1",
+    "@types/node": "^13.7.7",
+    "@typescript-eslint/eslint-plugin": "^2.32.0",
+    "@typescript-eslint/parser": "^2.32.0",
+    "ava": "^3.8.2",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.0.0",
+    "esm": "^3.2.25",
+    "husky": "^4.2.3",
+    "is-ci": "^2.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "json-schema": "^0.2.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  }
+}

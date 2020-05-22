@@ -1,0 +1,31 @@
+# dependencies
+bower_components/
+node_modules/
+vendor/
+
+# package manager files
+npm-debug.log*
+yarn-error.log
+shrinkwrap.yaml
+
+# development
+.circleci/
+.editorconfig
+.env
+src/
+test/
+types/
+tsconfig.tsbuildinfo
+yarn.lockfile
+
+# project specific
+test.js
+test.ts
+todo.md
+
+# files
+.gitignore
+.travis.yml
+gulpfile.js
+tsconfig.json
+tslint.json

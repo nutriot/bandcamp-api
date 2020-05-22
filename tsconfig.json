@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "inlineSourceMap": false,
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitUseStrict": true,
+    "noImplicitAny": false,
+    "outDir": "./lib",
+    "removeComments": true,
+    "rootDir": "./src",
+    "sourceMap": true,
+    "target": "es5"
+  },
+  "exclude": [
+    "lib",
+    "node_modules",
+    "test"
+  ]
+}

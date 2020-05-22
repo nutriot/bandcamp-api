@@ -1,0 +1,20 @@
+# dependencies
+bower_components/
+node_modules/
+vendor/
+
+# package manager files
+npm-debug.log*
+yarn-error.log
+yarn.lock
+
+# development
+.env
+*.map
+*.tsbuildinfo
+tslint-to-eslint-config.log
+
+# project specific
+test.js
+test.ts
+todo.md
