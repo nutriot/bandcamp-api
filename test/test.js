@@ -40,7 +40,7 @@ test('client_credentials', async t => {
 });
 
 test('refresh_token', async t => {
-  const actual = await api.getRefreshToken(process.env.BANDCAMP_REFRESH_TOKEN);
+  const actual = await api.refreshToken(process.env.BANDCAMP_REFRESH_TOKEN);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -128,15 +128,37 @@ test('get_orders', async t => {
 });
 
 test('update_shipped', async t => {
-  t.log('No tests for write operations implemented, skipping test');
+  const body = {
+    id: process.env.BANDCAMP_SALE_ID,
+    id_type: 's',
+    notification: false
+  };
 
-  t.pass();
+  const actual = (await api.updateShipped(process.env.BANDCAMP_ACCESS_TOKEN, body));
+
+  if (actual.error) {
+    if (!isCI) t.log(actual.message);
+    return t.fail();
+  }
+
+  t.is(actual.success, true);
 });
 
 test('mark_date_range_as_shipped', async t => {
-  t.log('No tests for write operations implemented, skipping test');
+  const body = {
+    band_id:  process.env.BANDCAMP_BAND_ID,
+    end_time: date,
+    email_notifications: false
+  };
 
-  t.pass();
+  const actual = (await api.markDateRangeAsShipped(process.env.BANDCAMP_ACCESS_TOKEN, body));
+
+  if (actual.error) {
+    if (!isCI) t.log(actual.message);
+    return t.fail();
+  }
+
+  t.is(actual.success, true);
 });
 
 test('update_quantities', async t => {
