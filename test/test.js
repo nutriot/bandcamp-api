@@ -1,7 +1,7 @@
 // Dependencies
+import 'isomorphic-fetch';
 import Bandcamp from '../lib';
 import dotenv from 'dotenv';
-import fetch from 'isomorphic-fetch';
 import isCI from 'is-ci';
 import test from 'ava';
 
