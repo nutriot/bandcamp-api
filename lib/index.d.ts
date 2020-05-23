@@ -5,6 +5,7 @@ export default class Bandcamp {
     constructor(credentials?: BandcampCredentials);
     private normalizeDate;
     private normalizeErrors;
+    private queryStringify;
     private post;
     getClientCredentials(): Promise<object>;
     refreshToken(refreshToken: any): Promise<object>;

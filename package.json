@@ -23,9 +23,7 @@
     "start": "tsc --watch --pretty --project ./",
     "test": "ava ./test/*.js --serial --verbose"
   },
-  "dependencies": {
-    "query-string": "^6.12.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@types/node": "^13.7.7",

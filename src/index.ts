@@ -1,5 +1,3 @@
-import * as queryString from 'query-string';
-
 export default class Bandcamp {
   CLIENT_ID: string | number;
   CLIENT_SECRET: string;
@@ -47,6 +45,15 @@ export default class Bandcamp {
     };
   }
 
+  /**
+   * Simply stringifier for query strings
+   *
+   * @param {object} object
+   */
+  private queryStringify(object) {
+    return Object.keys(object).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`).join('&');
+  }
+
   private async post(url, data = {}): Promise<object> {
     const response = await fetch(url, {
       headers: {
@@ -63,8 +70,9 @@ export default class Bandcamp {
   }
 
   /**
-  *
-  * @see {@link https://bandcamp.com/developer#initial_access}
+   * Get access and refresh token
+   *
+   * @see {@link https://bandcamp.com/developer#initial_access}
    */
   public async getClientCredentials(): Promise<object> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/oauth_token`;
@@ -79,13 +87,14 @@ export default class Bandcamp {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: queryString.stringify(body)
+      body: this.queryStringify(body)
     }
 
     return await this.post(requestUrl, payload);
   }
 
     /**
+     * Access tokens expire in one hour. When this happens you can use the refresh token to get a new access token
      *
      * @param {string} refreshToken
      *
@@ -105,13 +114,14 @@ export default class Bandcamp {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: queryString.stringify(body)
+      body: this.queryStringify(body)
     }
 
     return await this.post(requestUrl, payload);
   }
 
   /**
+   * List of the bands you have access to (either through artist accounts, label accounts, or partnerships)
    *
    * @param {string} accessToken
    * @param {number} [version] - version of the API
@@ -131,6 +141,7 @@ export default class Bandcamp {
   }
 
   /**
+   * Returns sales report for a label, band, or artist
    *
    * @param {string} accessToken
    * @param {Object} body
