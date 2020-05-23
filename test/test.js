@@ -128,13 +128,15 @@ test('get_orders', async t => {
 });
 
 test('update_shipped', async t => {
-  const body = {
-    id: process.env.BANDCAMP_SALE_ID,
-    id_type: 's',
-    notification: false
-  };
+  const items = [
+    {
+      id: process.env.BANDCAMP_SALE_ID,
+      id_type: 's',
+      notification: false
+    }
+  ];
 
-  const actual = (await api.updateShipped(process.env.BANDCAMP_ACCESS_TOKEN, body));
+  const actual = (await api.updateShipped(process.env.BANDCAMP_ACCESS_TOKEN, items));
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -162,13 +164,40 @@ test('mark_date_range_as_shipped', async t => {
 });
 
 test('update_quantities', async t => {
-  t.log('No tests for write operations implemented, skipping test');
+  const items = [
+    {
+      id: process.env.BANDCAMP_PACKAGE_IDS.split('|')[0],
+			id_type: 'p',
+			quantity_available: 0,
+			quantity_sold: 0
+    }
+  ];
 
-  t.pass();
+  const actual = (await api.updateQuantities(process.env.BANDCAMP_ACCESS_TOKEN, items));
+
+  if (actual.error) {
+    if (!isCI) t.log(actual.message);
+    return t.fail();
+  }
+
+  t.is(actual.success, true);
 });
 
 test('update_sku', async t => {
-  t.log('No tests for write operations implemented, skipping test');
+  const items = [
+    {
+      id: process.env.BANDCAMP_PACKAGE_IDS.split('|')[0],
+			id_type: 'p',
+			sku: 'TEST_SKU'
+    }
+  ];
 
-  t.pass();
+  const actual = (await api.updateSKU(process.env.BANDCAMP_ACCESS_TOKEN, items));
+
+  if (actual.error) {
+    if (!isCI) t.log(actual.message);
+    return t.fail();
+  }
+
+  t.is(actual.success, true);
 });
