@@ -1,3 +1,5 @@
+import { normalizeDate, normalizeErrors, queryStringify } from './helpers';
+
 export default class Bandcamp {
   CLIENT_ID: string | number;
   CLIENT_SECRET: string;
@@ -17,43 +19,6 @@ export default class Bandcamp {
     }
   }
 
-  /**
-   * Normalizes the date strings in the request body
-   * @param {Object} body - request body
-   */
-  private normalizeDate(body: object): object {
-    if (body['start_time']) {
-      body['start_time'] = new Date(body['start_time']).toISOString().slice(0, 10);
-    }
-
-    if (body['end_time']) {
-      body['end_time'] = new Date(body['end_time']).toISOString().slice(0, 10);
-    }
-
-    return body;
-  }
-
-  /**
-   * Normalizes the error responses from different API calls
-   *
-   * @param {Object} body - response body
-   */
-  private normalizeErrors(body: object): object {
-    return {
-      error: true,
-      message: body['error_description'] || body['error_message'] || body['message']
-    };
-  }
-
-  /**
-   * Simply stringifier for query strings
-   *
-   * @param {object} object
-   */
-  private queryStringify(object: object): string {
-    return Object.keys(object).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`).join('&');
-  }
-
   private async post(url, data = {}): Promise<object> {
     const response = await fetch(url, {
       headers: {
@@ -66,7 +31,7 @@ export default class Bandcamp {
 
     return response.ok
       ? await response.json()
-      : this.normalizeErrors(await response.json())
+      : normalizeErrors(await response.json())
   }
 
   /**
@@ -87,7 +52,7 @@ export default class Bandcamp {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: this.queryStringify(body)
+      body: queryStringify(body)
     }
 
     return await this.post(requestUrl, payload);
@@ -114,7 +79,7 @@ export default class Bandcamp {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: this.queryStringify(body)
+      body: queryStringify(body)
     }
 
     return await this.post(requestUrl, payload);
@@ -188,7 +153,7 @@ export default class Bandcamp {
       'headers': {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify(this.normalizeDate(body))
+      'body': JSON.stringify(normalizeDate(body))
     }
 
     return await this.post(requestUrl, payload);
@@ -242,7 +207,7 @@ export default class Bandcamp {
       'headers': {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify(this.normalizeDate(body))
+      'body': JSON.stringify(normalizeDate(body))
     }
 
     return await this.post(requestUrl, payload);
@@ -301,7 +266,7 @@ export default class Bandcamp {
       'headers': {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify(this.normalizeDate(body))
+      'body': JSON.stringify(normalizeDate(body))
     }
 
     return await this.post(requestUrl, payload);
