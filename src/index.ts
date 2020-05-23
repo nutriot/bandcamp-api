@@ -21,13 +21,13 @@ export default class Bandcamp {
    * Normalizes the date strings in the request body
    * @param {Object} body - request body
    */
-  private normalizeDate(body): object {
-    if (body.start_time) {
-      body['start_time'] = new Date(body.start_time).toISOString().slice(0, 10);
+  private normalizeDate(body: object): object {
+    if (body['start_time']) {
+      body['start_time'] = new Date(body['start_time']).toISOString().slice(0, 10);
     }
 
-    if (body.end_time) {
-      body['end_time'] = new Date(body.end_time).toISOString().slice(0, 10);
+    if (body['end_time']) {
+      body['end_time'] = new Date(body['end_time']).toISOString().slice(0, 10);
     }
 
     return body;
@@ -38,10 +38,10 @@ export default class Bandcamp {
    *
    * @param {Object} body - response body
    */
-  private normalizeErrors(body): object {
+  private normalizeErrors(body: object): object {
     return {
       error: true,
-      message: body.error_description || body.error_message || body.message
+      message: body['error_description'] || body['error_message'] || body['message']
     };
   }
 
@@ -50,7 +50,7 @@ export default class Bandcamp {
    *
    * @param {object} object
    */
-  private queryStringify(object) {
+  private queryStringify(object: object): string {
     return Object.keys(object).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`).join('&');
   }
 
