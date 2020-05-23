@@ -91,7 +91,7 @@ export default class Bandcamp {
      *
      * @see {@link https://bandcamp.com/developer#refresh_tokens}
      */
-  async getRefreshToken(refreshToken): Promise<object> {
+  async refreshToken(refreshToken): Promise<object> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/oauth_token`;
 
     const body: RefreshTokenRequestBody = {

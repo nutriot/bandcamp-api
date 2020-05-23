@@ -50,9 +50,9 @@ Returns access token and refresh token. Both expire after one hour.
 ```
 </details>
 
-#### `getRefreshToken()`
+#### `refreshToken()`
 
-Usage: `getRefreshToken(refreshToken)`
+Usage: `refreshToken(refreshToken)`
 
 Access tokens expire after one hour. You can use the refresh token to get a new access token.
 
@@ -61,7 +61,7 @@ Access tokens expire after one hour. You can use the refresh token to get a new 
 
 ```ts
 (async () => {
-  const refreshToken = await api.getRefreshToken(credentials.refresh_token);
+  const refreshToken = await api.refreshToken(credentials.refresh_token);
 })();
 ```
 </details>

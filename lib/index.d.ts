@@ -7,7 +7,7 @@ export default class Bandcamp {
     private normalizeErrors;
     private post;
     getClientCredentials(): Promise<object>;
-    getRefreshToken(refreshToken: any): Promise<object>;
+    refreshToken(refreshToken: any): Promise<object>;
     getMyBands(accessToken: any, version?: number): Promise<object>;
     getSalesReport(accessToken: string, body: SalesReportRequestBody, version?: number): Promise<object>;
     getMerchDetails(accessToken: string, body: GetMerchDetailsRequestBody, version?: number): Promise<object>;
