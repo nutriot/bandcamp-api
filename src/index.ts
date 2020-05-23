@@ -6,11 +6,11 @@ export default class Bandcamp {
   constructor(credentials: BandcampCredentials = {}) {
     this.CLIENT_ID = credentials.id
       ? credentials.id
-      : process.env.BANDCAMP_CLIENT_ID || undefined;
+      : process.env.BANDCAMP_CLIENT_ID;
 
     this.CLIENT_SECRET = credentials.secret
       ? credentials.secret
-      : process.env.BANDCAMP_CLIENT_SECRET || undefined;
+      : process.env.BANDCAMP_CLIENT_SECRET;
 
     if (!this.CLIENT_ID || !this.CLIENT_SECRET) {
       throw new Error('You need to provide both, your Bandcamp client ID and secret')
