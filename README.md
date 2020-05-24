@@ -5,7 +5,6 @@
 [![npm](https://flat.badgen.net/npm/license/@nutriot/bandcamp-api)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
 [![npm](https://flat.badgen.net/npm/v/@nutriot/bandcamp-api)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
 [![CircleCI](https://flat.badgen.net/circleci/github/nutriot/bandcamp-api)](https://circleci.com/gh/nutriot/bandcamp-api)
-[![David](https://flat.badgen.net/david/dep/nutriot/bandcamp-api)](https://david-dm.org/nutriot/bandcamp-api)
 
 ## Installation
 
