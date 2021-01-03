@@ -96,8 +96,7 @@ test('sales_report', async t => {
 test('get_merch_details', async t => {
   const body = {
     band_id: process.env.BANDCAMP_BAND_ID,
-    start_time: start_time,
-    package_ids: package_ids
+    start_time: start_time
   };
 
   const actual = (await api.getMerchDetails(process.env.BANDCAMP_ACCESS_TOKEN, body));
@@ -179,7 +178,7 @@ test('mark_date_range_as_shipped', async t => {
 test('update_quantities', async t => {
   const items = [
     {
-      id: process.env.BANDCAMP_PACKAGE_IDS.split('|')[0],
+      id: package_ids[0],
 			id_type: 'p',
 			quantity_available: 0,
 			quantity_sold: 0
@@ -199,7 +198,7 @@ test('update_quantities', async t => {
 test('update_sku', async t => {
   const items = [
     {
-      id: process.env.BANDCAMP_PACKAGE_IDS.split('|')[0],
+      id: package_ids[0],
 			id_type: 'p',
 			sku: 'TEST_SKU'
     }
