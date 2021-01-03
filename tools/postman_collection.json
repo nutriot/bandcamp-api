@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "6289047e-0991-4f70-8069-4806fc776b69",
+		"name": "Bandcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Getting Access",
+			"item": [
+				{
+					"name": "client_credentials",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { access_token, refresh_token } = JSON.parse(responseBody);",
+									"",
+									"pm.globals.set(\"access_token\", access_token);",
+									"pm.globals.set(\"refresh_token\", refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{BANDCAMP_CLIENT_ID}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{BANDCAMP_CLIENT_SECRET}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://bandcamp.com/oauth_token",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"oauth_token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh_token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { access_token, refresh_token } = JSON.parse(responseBody);",
+									"",
+									"pm.globals.set(\"access_token\", access_token);",
+									"pm.globals.set(\"refresh_token\", refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{BANDCAMP_CLIENT_ID}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{BANDCAMP_CLIENT_SECRET}}",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://bandcamp.com/oauth_token",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"oauth_token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "https://bandcamp.com/developer",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Account API",
+			"item": [
+				{
+					"name": "my_bands",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const { bands } = JSON.parse(responseBody);",
+									"",
+									"pm.globals.set(\"band_id\", bands[0].band_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://bandcamp.com/api/account/1/my_bands",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"account",
+								"1",
+								"my_bands"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sales API",
+			"item": [
+				{
+					"name": "sales_report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"band_id\": {{band_id}},\n    \"start_time\": \"{{start_time}}\"\n}"
+						},
+						"url": {
+							"raw": "https://bandcamp.com/api/sales/1/sales_report",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"sales",
+								"1",
+								"sales_report"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Merch Orders API",
+			"item": [
+				{
+					"name": "get_merch_details",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"band_id\": {{band_id}},\n    \"start_time\": \"{{start_time}}\"\n}"
+						},
+						"url": {
+							"raw": "https://bandcamp.com/api/merchorders/1/get_merch_details",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchorders",
+								"1",
+								"get_merch_details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"band_id\": 2066119280,\n\t\"member_band_id\": null,\n\t\"start_time\": \"2012-01-01\",\n\t\"end_time\": null,\n\t\"unshipped_only\": false,\n\t\"name\": null,\n\t\"origin_id\": null,\n\t\"format\": \"json\"\n}"
+						},
+						"url": {
+							"raw": "https://bandcamp.com/api/merchorders/3/get_orders",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchorders",
+								"3",
+								"get_orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_shipping_origin_details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"band_id\": 2066119280,\n\t\"origin_id\": null\n}"
+						},
+						"url": {
+							"raw": "https://bandcamp.com/api/merchorders/1/get_shipping_origin_details",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchorders",
+								"1",
+								"get_shipping_origin_details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_shipped",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{\n\t\t\"id\": 1569096005,\n\t\t\"id_type\": \"p\",\n\t\t\"shipped\": true,\n\t\t\"notification\": false\n\t}\n]"
+						},
+						"url": {
+							"raw": "https://bandcamp.com/api/merchorders/2/update_shipped",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchorders",
+								"2",
+								"update_shipped"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mark_date_range_as_shipped",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{\n\t\t\"id\": 1569096005,\n\t\t\"id_type\": \"p\",\n\t\t\"shipped\": true,\n\t\t\"notification\": false\n\t}\n]"
+						},
+						"url": {
+							"raw": "https://bandcamp.com/api/merchorders/2/update_shipped",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchorders",
+								"2",
+								"update_shipped"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_quantities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{\n\t\t\"id\": 1569096005,\n\t\t\"id_type\": \"p\",\n\t\t\"shipped\": true,\n\t\t\"notification\": false\n\t}\n]"
+						},
+						"url": {
+							"raw": "https://bandcamp.com/api/merchorders/2/update_shipped",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchorders",
+								"2",
+								"update_shipped"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_sku",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{\n\t  \"id\": 3563531224,\n      \"id_type\": \"p\",\n      \"sku\": \"YOLO\"\n\t}\n]"
+						},
+						"url": {
+							"raw": "https://bandcamp.com/api/merchorders/1/update_sku",
+							"protocol": "https",
+							"host": [
+								"bandcamp",
+								"com"
+							],
+							"path": [
+								"api",
+								"merchorders",
+								"1",
+								"update_sku"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.globals.set(\"start_time\", new Date('2008-09-16'));",
+					"pm.globals.set(\"end_time\", new Date());"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
