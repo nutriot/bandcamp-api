@@ -10,6 +10,7 @@
   "files": [
     "lib/"
   ],
+  "typings": "./types",
   "repository": {
     "type": "git",
     "url": "https://github.com/nutriot/bandcamp-api.git"
