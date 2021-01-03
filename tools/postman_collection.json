@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6289047e-0991-4f70-8069-4806fc776b69",
+		"_postman_id": "96fd69e6-bcce-412f-bf53-15404ac3c993",
 		"name": "Bandcamp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -354,7 +354,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"band_id\": 2066119280,\n\t\"origin_id\": null\n}"
+							"raw": "{\n    \"band_id\": {{band_id}},\n    \"start_time\": \"{{start_time}}\"\n}"
 						},
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/1/get_shipping_origin_details",
@@ -498,7 +498,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n\t{\n\t  \"id\": 3563531224,\n      \"id_type\": \"p\",\n      \"sku\": \"YOLO\"\n\t}\n]"
+							"raw": ""
 						},
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/1/update_sku",
