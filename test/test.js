@@ -17,11 +17,15 @@ const package_ids = process.env.BANDCAMP_PACKAGE_IDS.split('|');
 test('BANDCAMP_CLIENT_ID', t => {
   const actual = process.env.BANDCAMP_CLIENT_ID;
 
+  if (!isCI) t.log(process.env.BANDCAMP_CLIENT_ID);
+
   t.not(actual, undefined);
 });
 
 test('BANDCAMP_CLIENT_SECRET', t => {
   const actual = process.env.BANDCAMP_CLIENT_SECRET;
+
+  if (!isCI) t.log(process.env.BANDCAMP_CLIENT_SECRET);
 
   t.not(actual, undefined);
 });
