@@ -123,10 +123,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/sales/${String(version)}/sales_report`;
 
     const payload = {
-      'headers': {
+      headers: {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify(body)
+      body: JSON.stringify(body)
     }
 
     return await this.post(requestUrl, payload);
@@ -150,10 +150,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${String(version)}/get_merch_details`;
 
     const payload = {
-      'headers': {
+      headers: {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify(normalizeDate(body))
+      body: JSON.stringify(normalizeDate(body))
     }
 
     return await this.post(requestUrl, payload);
@@ -174,10 +174,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${String(version)}/get_shipping_origin_details`;
 
     const payload = {
-      'headers': {
+      headers: {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify(body)
+      body: JSON.stringify(body)
     }
 
     return await this.post(requestUrl, payload);
@@ -204,10 +204,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${String(version)}/get_orders`;
 
     const payload = {
-      'headers': {
+      headers: {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify(normalizeDate(body))
+      body: JSON.stringify(normalizeDate(body))
     }
 
     return await this.post(requestUrl, payload);
@@ -233,12 +233,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${String(version)}/update_shipped`;
 
     const payload = {
-      'headers': {
+      headers: {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify({
-        'items': items
-      })
+      body: JSON.stringify({items})
     }
 
     return await this.post(requestUrl, payload);
@@ -263,10 +261,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${String(version)}/mark_date_range_as_shipped`;
 
     const payload = {
-      'headers': {
+      headers: {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify(normalizeDate(body))
+      body: JSON.stringify(normalizeDate(body))
     }
 
     return await this.post(requestUrl, payload);
@@ -290,12 +288,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${String(version)}/update_quantities`;
 
     const payload = {
-      'headers': {
+      headers: {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify({
-        'items': items
-      })
+      body: JSON.stringify({items})
     }
 
     return await this.post(requestUrl, payload);
@@ -317,12 +313,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${String(version)}/update_sku`;
 
     const payload = {
-      'headers': {
+      headers: {
         'Authorization': `Bearer ${accessToken}`
       },
-      'body': JSON.stringify({
-        'items': items
-      })
+      body: JSON.stringify({items})
     }
 
     return await this.post(requestUrl, payload);
