@@ -1,9 +1,10 @@
+import test from 'ava';
+
 // Dependencies
 import 'isomorphic-fetch';
 import Bandcamp from '../lib';
 import dotenv from 'dotenv';
 import isCI from 'is-ci';
-import test from 'ava';
 
 // Read .env file
 dotenv.config();
