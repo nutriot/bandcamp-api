@@ -28,6 +28,7 @@ types/
 yarn.lockfile
 
 # project specific
+tools/
 test.js
 test.ts
 todo.md
