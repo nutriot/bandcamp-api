@@ -11,22 +11,23 @@ shrinkwrap.yaml
 # development
 .circleci/
 .editorconfig
-.env
+.env*
 .eslintcache
+.eslintignore
+.eslintrc
+.gitignore
+.travis.yml
+gulpfile.js
+rollup.config.json
 src/
 test/
-types/
+tsconfig.json
 tsconfig.tsbuildinfo
+tslint.json
+types/
 yarn.lockfile
 
 # project specific
 test.js
 test.ts
 todo.md
-
-# files
-.gitignore
-.travis.yml
-gulpfile.js
-tsconfig.json
-tslint.json
