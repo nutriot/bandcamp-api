@@ -12,6 +12,7 @@ shrinkwrap.yaml
 .circleci/
 .editorconfig
 .env
+.eslintcache
 src/
 test/
 types/

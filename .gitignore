@@ -10,6 +10,7 @@ yarn.lock
 
 # development
 .env
+.eslintcache
 *.map
 *.tsbuildinfo
 tslint-to-eslint-config.log
