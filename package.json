@@ -28,9 +28,9 @@
     "lint:ts": "eslint ./src",
     "lint": "npm-run-all --parallel lint:*",
     "start": "rollup --watch --config",
-    "test": "ava ./test/*.js --serial --verbose"
+    "test": "ava ./test/*.js --serial --verbose",
+    "prepare": "husky install"
   },
-  "dependencies": {},
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@rollup/plugin-typescript": "^8.1.0",
@@ -42,7 +42,7 @@
     "eslint": "^7.17.0",
     "eslint-plugin-json": "^2.1.2",
     "esm": "^3.2.25",
-    "husky": "^4.3.6",
+    "husky": "^7.0.0",
     "is-ci": "^2.0.0",
     "isomorphic-fetch": "^3.0.0",
     "jsonlint": "^1.6.3",
@@ -57,11 +57,6 @@
     "require": [
       "esm"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.json": "jsonlint --quiet",
