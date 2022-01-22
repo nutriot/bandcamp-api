@@ -4,18 +4,21 @@ commands:
   run-test:
     steps:
       - checkout
+      - pnpm_install: |
+          curl -f https://get.pnpm.io/v6.16.js
+          node - add --global pnpm@6 && pnpm config set store-dir ~/.pnpm-store
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Installing Dependencies
-          command: npm install
+          command: pnpm install --frozen-lockfile
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
           paths:
-            - ./node_modules
+            - ~/.pnpm-store
       - run:
           name: Running Tests
-          command: npm test
+          command: pnpm test
 
 jobs:
   node-latest:
