@@ -10,7 +10,6 @@ specifiers:
   dotenv: ^14.2.0
   eslint: ^8.7.0
   eslint-plugin-json: ^3.1.0
-  esm: ^3.2.25
   husky: ^7.0.4
   is-ci: ^3.0.1
   isomorphic-fetch: ^3.0.0
@@ -35,7 +34,6 @@ devDependencies:
   dotenv: 14.2.0
   eslint: 8.7.0
   eslint-plugin-json: 3.1.0
-  esm: 3.2.25
   husky: 7.0.4
   is-ci: 3.0.1
   isomorphic-fetch: 3.0.0
@@ -1081,11 +1079,6 @@ packages:
       v8-compile-cache: 2.3.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /esm/3.2.25:
-    resolution: {integrity: sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==}
-    engines: {node: '>=6'}
     dev: true
 
   /espree/9.3.0:

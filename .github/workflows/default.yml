@@ -37,6 +37,9 @@ jobs:
           - recursive: true
             args: [--frozen-lockfile, --strict-peer-dependencies]
 
+    - name: Lint Source
+      run: pnpm run lint --if-present
+
     - name: Build Source
       run: pnpm run build --if-present
 

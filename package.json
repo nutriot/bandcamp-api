@@ -4,7 +4,7 @@
   "description": "Node.js library for the Bandcamp API",
   "main": "lib/index.cjs",
   "exports": {
-    "import": "./index.js",
+    "import": "./index.ms",
     "require": "./index.cjs"
   },
   "files": [
@@ -27,7 +27,7 @@
     "lint:code": "eslint ./src --ignore-path .gitignore",
     "lint": "npm-run-all --parallel lint:*",
     "start": "rollup --watch --config",
-    "test": "ava ./test/*.js --serial --verbose",
+    "test": "ava ./test/*.mjs --serial --verbose",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -40,7 +40,6 @@
     "dotenv": "^14.2.0",
     "eslint": "^8.7.0",
     "eslint-plugin-json": "^3.1.0",
-    "esm": "^3.2.25",
     "husky": "^7.0.4",
     "is-ci": "^3.0.1",
     "isomorphic-fetch": "^3.0.0",
@@ -54,11 +53,6 @@
     "rollup": "^2.66.0",
     "tslib": "^2.3.1",
     "typescript": "^4.5.5"
-  },
-  "ava": {
-    "require": [
-      "esm"
-    ]
   },
   "lint-staged": {
     "*.(json|js|ts)": "eslint --cache --fix",
