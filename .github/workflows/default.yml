@@ -45,3 +45,6 @@ jobs:
 
     - name: Run Tests
       run: pnpm run test --if-present
+      with:
+        BANDCAMP_CLIENT_ID: ${{ secrets.BANDCAMP_CLIENT_ID }}
+        BANDCAMP_CLIENT_SECRET: ${{ secrets.BANDCAMP_CLIENT_SECRET }}
