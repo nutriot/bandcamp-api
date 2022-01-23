@@ -4,7 +4,7 @@
 
 [![npm](https://flat.badgen.net/npm/license/@nutriot/bandcamp-api)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
 [![npm](https://flat.badgen.net/npm/v/@nutriot/bandcamp-api)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
-[![CircleCI](https://flat.badgen.net/circleci/github/nutriot/bandcamp-api)](https://circleci.com/gh/nutriot/bandcamp-api)
+[![CI](https://img.shields.io/github/workflow/status/nutriot/bandcamp-api/CI?style=flat-square)](https://github.com/nutriot/bandcamp-api/actions)
 
 ## Installation
 
@@ -21,13 +21,13 @@ In order to make API calls, you need to [register](https://bandcamp.com/contact?
 Import and initialize the Bandcamp module
 
 ```ts
-import Bandcamp from '@nutriot/bandcamp-api';
+import Bandcamp from "@nutriot/bandcamp-api";
 
 // Alternatively, you can omit client ID and secret and set the
 // environment variables BANDCAMP_CLIENT_ID and BANDCAMP_CLIENT_SECRET
 const api = new Bandcamp({
-    id: '<YOUR_CLIENT_ID>',
-    secret: '<YOUR_CLIENT_SECRET>'
+  id: "<YOUR_CLIENT_ID>",
+  secret: "<YOUR_CLIENT_SECRET>",
 });
 ```
 
@@ -47,6 +47,7 @@ Returns access token and refresh token. Both expire after one hour.
   const credentials = await api.getClientCredentials();
 })();
 ```
+
 </details>
 
 #### `refreshToken()`
@@ -63,6 +64,7 @@ Access tokens expire after one hour. You can use the refresh token to get a new 
   const refreshToken = await api.refreshToken(credentials.refresh_token);
 })();
 ```
+
 </details>
 
 #### `getMyBands()`
@@ -79,6 +81,7 @@ Returns a list of the bands you have access to (either through artist accounts, 
   const myBands = await api.getMyBands(credentials.access_token);
 })();
 ```
+
 </details>
 
 #### `getSalesReport()`
@@ -93,13 +96,14 @@ Returns your sales reports for a label, band, or artist
 ```ts
 (async () => {
   const salesReports = await api.getSalesReport(credentials.access_token, {
-    "band_id": 1633770804,
-    "member_band_id": 1925197437,
-    "start_time": "2015-12-31 23:59:59", 
-    "end_time": "2016-01-31 00:00:00"
+    band_id: 1633770804,
+    member_band_id: 1925197437,
+    start_time: "2015-12-31 23:59:59",
+    end_time: "2016-01-31 00:00:00",
   });
 })();
 ```
+
 </details>
 
 #### `getMerchDetails()`
@@ -114,14 +118,15 @@ Returns merchandise a label, band, or artist has available for purchase on Bandc
 ```ts
 (async () => {
   const salesReports = await api.getMerchDetails(credentials.access_token, {
-    "band_id": 1633770804,
-    "start_time": "2015-12-31",
-    "end_time": "2016-01-01",
-    "member_band_id": 1925197437,
-    "package_ids": [175167691, 1154611570]      
+    band_id: 1633770804,
+    start_time: "2015-12-31",
+    end_time: "2016-01-01",
+    member_band_id: 1925197437,
+    package_ids: [175167691, 1154611570],
   });
 })();
 ```
+
 </details>
 
 #### `getShippingOriginDetails()`
@@ -135,9 +140,12 @@ Returns the shipping origins for artists and labels linked to your account on Ba
 
 ```ts
 (async () => {
-  const salesReports = await api.getShippingOriginDetails(credentials.access_token);
+  const salesReports = await api.getShippingOriginDetails(
+    credentials.access_token
+  );
 })();
 ```
+
 </details>
 
 #### `getOrders()`
@@ -152,10 +160,11 @@ Returns merchandise orders placed with a band or label
 ```ts
 (async () => {
   const orders = await api.getOrders(credentials.access_token, {
-    "band_id": 1633770804
+    band_id: 1633770804,
   });
 })();
 ```
+
 </details>
 
 #### `updateShipped()`
@@ -171,22 +180,23 @@ Updates shipped/unshipped status of merchandise orders
 (async () => {
   const response = await api.updateShipped(credentials.access_token, [
     {
-      "id": 1925197437,
-      "id_type": "p",
-      "shipped": true,
-      "notification_message":  "Your items have shipped!",
-      "ship_date":  "2016-02-29 12:59:59",
-      "carrier": "UPS",
-      "tracking_code": "VM13243546US"
+      id: 1925197437,
+      id_type: "p",
+      shipped: true,
+      notification_message: "Your items have shipped!",
+      ship_date: "2016-02-29 12:59:59",
+      carrier: "UPS",
+      tracking_code: "VM13243546US",
     },
     {
-      "id" : 4261657553,
-      "id_type": "s",
-      "shipped": false
-    }
+      id: 4261657553,
+      id_type: "s",
+      shipped: false,
+    },
   ]);
 })();
 ```
+
 </details>
 
 #### `markDateRangeAsShipped()`
@@ -201,14 +211,15 @@ Updates shipped/unshipped status of merchandise orders within given date range
 ```ts
 (async () => {
   const response = await api.markDateRangeAsShipped(credentials.access_token, {
-    "band_id":  2293737955,
-    "member_band_id": 4261657553,
-    "start_time": "2015-12-31 23:59:59",
-    "end_time": "2016-01-31 00:00:00",
-    "email_notifications": true
+    band_id: 2293737955,
+    member_band_id: 4261657553,
+    start_time: "2015-12-31 23:59:59",
+    end_time: "2016-01-31 00:00:00",
+    email_notifications: true,
   });
 })();
 ```
+
 </details>
 
 #### `updateQuantities()`
@@ -226,22 +237,23 @@ Updates merch items' stock quantities (inventory levels)
 (async () => {
   const response = await api.updateQuantities(credentials.access_token, [
     {
-         "id_type" : "p", 
-         "id" : 3387163565,
-         "quantity_available" : 365, 
-         "quantity_sold": 57,
-         "origin_id": 12345698
-    }, 
+      id_type: "p",
+      id: 3387163565,
+      quantity_available: 365,
+      quantity_sold: 57,
+      origin_id: 12345698,
+    },
     {
-         "type" : "o", 
-         "id" : 6789054322,
-         "quantity_available" : 45, 
-         "quantity_sold": 12,
-         "origin_id": 12345678
-    } 
+      type: "o",
+      id: 6789054322,
+      quantity_available: 45,
+      quantity_sold: 12,
+      origin_id: 12345678,
+    },
   ]);
 })();
 ```
+
 </details>
 
 #### `updateSKU()`
@@ -257,18 +269,19 @@ Updates merch item stock-keeping unit (SKU)
 (async () => {
   const response = await api.updateSKU(credentials.access_token, [
     {
-      "id": 175167691,
-      "id_type": "p",
-      "sku": "AFIB"
+      id: 175167691,
+      id_type: "p",
+      sku: "AFIB",
     },
     {
-      "id": 1154611570,
-      "id_type": "o",
-      "sku": "AFIB-XL"
-    }
+      id: 1154611570,
+      id_type: "o",
+      sku: "AFIB-XL",
+    },
   ]);
 })();
 ```
+
 </details>
 
 ## License
