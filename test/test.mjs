@@ -14,6 +14,9 @@ const date = new Date();
 const start_time = date.setMonth(date.getMonth() - 18);
 const package_ids = process.env.BANDCAMP_PACKAGE_IDS.split('|');
 
+let BANDCAMP_ACCESS_TOKEN;
+let BANDCAMP_REFRESH_TOKEN;
+
 test('BANDCAMP_CLIENT_ID', t => {
   const actual = process.env.BANDCAMP_CLIENT_ID;
 
@@ -46,34 +49,33 @@ test('client_credentials', async t => {
     return t.pass();
   }
 
-  process.env['BANDCAMP_ACCESS_TOKEN'] = actual.access_token;
-  process.env['BANDCAMP_REFRESH_TOKEN'] = actual.refresh_token;
+  BANDCAMP_ACCESS_TOKEN = actual.access_token;
+  BANDCAMP_REFRESH_TOKEN = actual.refresh_token;
 
   t.is(actual.ok, true);
 });
 
 test('refresh_token', async t => {
-  const actual = await api.refreshToken(process.env.BANDCAMP_REFRESH_TOKEN);
+  const actual = await api.refreshToken(BANDCAMP_REFRESH_TOKEN);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
     return t.pass();
   }
 
-  process.env['BANDCAMP_ACCESS_TOKEN'] = actual.access_token;
-  process.env['BANDCAMP_REFRESH_TOKEN'] = actual.refresh_token;
+  BANDCAMP_ACCESS_TOKEN = actual.access_token;
+  BANDCAMP_REFRESH_TOKEN = actual.refresh_token;
 
   t.is(actual.ok, true);
 });
 
 test('my_bands', async t => {
-  const actual = (await api.getMyBands(process.env.BANDCAMP_ACCESS_TOKEN));
+  const actual = await api.getMyBands(BANDCAMP_ACCESS_TOKEN);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
     return t.fail();
   }
-
   t.is(actual.bands.length > 0, true);
 });
 
@@ -83,7 +85,7 @@ test('sales_report', async t => {
     start_time: start_time
   };
 
-  const actual = Object.keys(await api.getSalesReport(process.env.BANDCAMP_ACCESS_TOKEN, body));
+  const actual = Object.keys(await api.getSalesReport(BANDCAMP_ACCESS_TOKEN, body));
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -99,7 +101,7 @@ test('get_merch_details', async t => {
     start_time: start_time
   };
 
-  const actual = (await api.getMerchDetails(process.env.BANDCAMP_ACCESS_TOKEN, body));
+  const actual = await api.getMerchDetails(BANDCAMP_ACCESS_TOKEN, body);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -114,7 +116,7 @@ test('get_shipping_origin_details', async t => {
     band_id: process.env.BANDCAMP_BAND_ID
   };
 
-  const actual = (await api.getShippingOriginDetails(process.env.BANDCAMP_ACCESS_TOKEN, body));
+  const actual = await api.getShippingOriginDetails(BANDCAMP_ACCESS_TOKEN, body);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -129,7 +131,7 @@ test('get_orders', async t => {
     band_id: process.env.BANDCAMP_BAND_ID
   };
 
-  const actual = (await api.getOrders(process.env.BANDCAMP_ACCESS_TOKEN, body));
+  const actual = await api.getOrders(BANDCAMP_ACCESS_TOKEN, body);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -148,7 +150,7 @@ test('update_shipped', async t => {
     }
   ];
 
-  const actual = (await api.updateShipped(process.env.BANDCAMP_ACCESS_TOKEN, items));
+  const actual = await api.updateShipped(BANDCAMP_ACCESS_TOKEN, items);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -165,7 +167,7 @@ test('mark_date_range_as_shipped', async t => {
     email_notifications: false
   };
 
-  const actual = (await api.markDateRangeAsShipped(process.env.BANDCAMP_ACCESS_TOKEN, body));
+  const actual = await api.markDateRangeAsShipped(BANDCAMP_ACCESS_TOKEN, body);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -185,7 +187,7 @@ test('update_quantities', async t => {
     }
   ];
 
-  const actual = (await api.updateQuantities(process.env.BANDCAMP_ACCESS_TOKEN, items));
+  const actual = await api.updateQuantities(BANDCAMP_ACCESS_TOKEN, items);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
@@ -204,7 +206,7 @@ test('update_sku', async t => {
     }
   ];
 
-  const actual = (await api.updateSKU(process.env.BANDCAMP_ACCESS_TOKEN, items));
+  const actual = await api.updateSKU(BANDCAMP_ACCESS_TOKEN, items);
 
   if (actual.error) {
     if (!isCI) t.log(actual.message);
