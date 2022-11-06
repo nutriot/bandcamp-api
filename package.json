@@ -4,11 +4,14 @@
   "description": "Node.js library for the Bandcamp API",
   "main": "lib/index.cjs",
   "exports": {
-    "import": "./index.ms",
-    "require": "./index.cjs"
+    "import": "./lib/index.mjs",
+    "require": "./lib/index.cjs"
   },
   "files": [
-    "lib/"
+    "lib/",
+    "types/",
+		"LICENSE",
+		"README.md"
   ],
   "typings": "./types",
   "repository": {
