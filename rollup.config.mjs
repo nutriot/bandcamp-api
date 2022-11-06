@@ -1,7 +1,5 @@
 import typescript from "@rollup/plugin-typescript";
 
-const plugins = [typescript()];
-
 export default [
 	{
 		input: "src/index.ts",
@@ -16,6 +14,8 @@ export default [
 				format: "cjs"
 			}
 		],
-		plugins: plugins,
+		plugins: [
+			typescript()
+		]
 	},
 ];
