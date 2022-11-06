@@ -61,6 +61,10 @@ jobs:
 
       - name: Build Source
         run: pnpm run --if-present build
+        env:
+          BANDCAMP_CLIENT_ID: ${{ secrets.BANDCAMP_CLIENT_ID }}
+          BANDCAMP_CLIENT_SECRET: ${{ secrets.BANDCAMP_CLIENT_SECRET }}
+          BANDCAMP_PACKAGE_IDS: ${{ secrets.BANDCAMP_PACKAGE_IDS }}
 
       - name: Run Tests
         run: pnpm run --if-present test
