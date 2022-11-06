@@ -28,6 +28,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "start": "rollup --watch --config",
     "test": "ava ./test/*.mjs --serial --verbose",
+		"prepack": "npm run build",
     "prepare": "husky install"
   },
   "devDependencies": {

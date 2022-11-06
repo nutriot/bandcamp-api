@@ -16,5 +16,8 @@ yarn.lock
 *.tsbuildinfo
 tslint-to-eslint-config.log
 
+# build
+lib/
+
 # project specific
 todo.md
