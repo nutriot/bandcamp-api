@@ -43,9 +43,7 @@ Returns access token and refresh token. Both expire after one hour.
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const credentials = await api.getClientCredentials();
-})();
+await api.getClientCredentials();
 ```
 
 </details>
@@ -60,9 +58,7 @@ Access tokens expire after one hour. You can use the refresh token to get a new 
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const refreshToken = await api.refreshToken(credentials.refresh_token);
-})();
+await api.refreshToken(credentials.refresh_token);
 ```
 
 </details>
@@ -77,9 +73,7 @@ Returns a list of the bands you have access to (either through artist accounts, 
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const myBands = await api.getMyBands(credentials.access_token);
-})();
+await api.getMyBands(credentials.access_token);
 ```
 
 </details>
@@ -94,14 +88,12 @@ Returns your sales reports for a label, band, or artist
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const salesReports = await api.getSalesReport(credentials.access_token, {
-		band_id: 1633770804,
-		member_band_id: 1925197437,
-		start_time: "2015-12-31 23:59:59",
-		end_time: "2016-01-31 00:00:00",
-	});
-})();
+await api.getSalesReport(credentials.access_token, {
+	band_id: 1633770804,
+	member_band_id: 1925197437,
+	start_time: "2015-12-31 23:59:59",
+	end_time: "2016-01-31 00:00:00",
+});
 ```
 
 </details>
@@ -116,15 +108,13 @@ Returns merchandise a label, band, or artist has available for purchase on Bandc
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const salesReports = await api.getMerchDetails(credentials.access_token, {
-		band_id: 1633770804,
-		start_time: "2015-12-31",
-		end_time: "2016-01-01",
-		member_band_id: 1925197437,
-		package_ids: [175167691, 1154611570],
-	});
-})();
+await api.getMerchDetails(credentials.access_token, {
+	band_id: 1633770804,
+	start_time: "2015-12-31",
+	end_time: "2016-01-01",
+	member_band_id: 1925197437,
+	package_ids: [175167691, 1154611570],
+});
 ```
 
 </details>
@@ -139,11 +129,7 @@ Returns the shipping origins for artists and labels linked to your account on Ba
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const salesReports = await api.getShippingOriginDetails(
-		credentials.access_token
-	);
-})();
+await api.getShippingOriginDetails(credentials.access_token);
 ```
 
 </details>
@@ -158,11 +144,9 @@ Returns merchandise orders placed with a band or label
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const orders = await api.getOrders(credentials.access_token, {
-		band_id: 1633770804,
-	});
-})();
+await api.getOrders(credentials.access_token, {
+	band_id: 1633770804,
+});
 ```
 
 </details>
@@ -177,24 +161,22 @@ Updates shipped/unshipped status of merchandise orders
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const response = await api.updateShipped(credentials.access_token, [
-		{
-			id: 1925197437,
-			id_type: "p",
-			shipped: true,
-			notification_message: "Your items have shipped!",
-			ship_date: "2016-02-29 12:59:59",
-			carrier: "UPS",
-			tracking_code: "VM13243546US",
-		},
-		{
-			id: 4261657553,
-			id_type: "s",
-			shipped: false,
-		},
-	]);
-})();
+await api.updateShipped(credentials.access_token, [
+	{
+		id: 1925197437,
+		id_type: "p",
+		shipped: true,
+		notification_message: "Your items have shipped!",
+		ship_date: "2016-02-29 12:59:59",
+		carrier: "UPS",
+		tracking_code: "VM13243546US",
+	},
+	{
+		id: 4261657553,
+		id_type: "s",
+		shipped: false,
+	},
+]);
 ```
 
 </details>
@@ -209,15 +191,13 @@ Updates shipped/unshipped status of merchandise orders within given date range
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const response = await api.markDateRangeAsShipped(credentials.access_token, {
-		band_id: 2293737955,
-		member_band_id: 4261657553,
-		start_time: "2015-12-31 23:59:59",
-		end_time: "2016-01-31 00:00:00",
-		email_notifications: true,
-	});
-})();
+await api.markDateRangeAsShipped(credentials.access_token, {
+	band_id: 2293737955,
+	member_band_id: 4261657553,
+	start_time: "2015-12-31 23:59:59",
+	end_time: "2016-01-31 00:00:00",
+	email_notifications: true,
+});
 ```
 
 </details>
@@ -234,24 +214,22 @@ Updates merch items' stock quantities (inventory levels)
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const response = await api.updateQuantities(credentials.access_token, [
-		{
-			id_type: "p",
-			id: 3387163565,
-			quantity_available: 365,
-			quantity_sold: 57,
-			origin_id: 12345698,
-		},
-		{
-			type: "o",
-			id: 6789054322,
-			quantity_available: 45,
-			quantity_sold: 12,
-			origin_id: 12345678,
-		},
-	]);
-})();
+await api.updateQuantities(credentials.access_token, [
+	{
+		id_type: "p",
+		id: 3387163565,
+		quantity_available: 365,
+		quantity_sold: 57,
+		origin_id: 12345698,
+	},
+	{
+		type: "o",
+		id: 6789054322,
+		quantity_available: 45,
+		quantity_sold: 12,
+		origin_id: 12345678,
+	},
+]);
 ```
 
 </details>
@@ -266,20 +244,18 @@ Updates merch item stock-keeping unit (SKU)
 <summary><strong>Example</strong></summary>
 
 ```ts
-(async () => {
-	const response = await api.updateSKU(credentials.access_token, [
-		{
-			id: 175167691,
-			id_type: "p",
-			sku: "AFIB",
-		},
-		{
-			id: 1154611570,
-			id_type: "o",
-			sku: "AFIB-XL",
-		},
-	]);
-})();
+await api.updateSKU(credentials.access_token, [
+	{
+		id: 175167691,
+		id_type: "p",
+		sku: "AFIB",
+	},
+	{
+		id: 1154611570,
+		id_type: "o",
+		sku: "AFIB-XL",
+	},
+]);
 ```
 
 </details>
