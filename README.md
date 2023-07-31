@@ -2,9 +2,9 @@
 
 > Library for the [Bandcamp API](https://bandcamp.com/developer), written in TypeScript
 
-[![npm](https://flat.badgen.net/npm/license/@nutriot/bandcamp-api)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
-[![npm](https://flat.badgen.net/npm/v/@nutriot/bandcamp-api)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
-[![CI](https://img.shields.io/github/actions/workflow/status/nutriot/bandcamp-api/default.yml?style=flat-square)](https://github.com/nutriot/bandcamp-api/actions)
+[![License](https://img.shields.io/github/license/nutriot/bandcamp-api?color=blue&style=for-the-badge)](https://github.com/nutriot/bandcamp-api/blob/main/LICENSE)
+[![Version](https://img.shields.io/npm/v/@nutriot/bandcamp-api?style=for-the-badge)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
+[![Build](https://img.shields.io/github/actions/workflow/status/nutriot/bandcamp-api/default.yml?style=for-the-badge)](https://github.com/nutriot/bandcamp-api/actions)
 
 ## Installation
 
