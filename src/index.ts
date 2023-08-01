@@ -31,6 +31,8 @@ export default class Bandcamp {
 
   /**
    * Get access and refresh token
+	 *
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer#initial_access}
    */
@@ -57,6 +59,7 @@ export default class Bandcamp {
      * Access tokens expire in one hour. When this happens you can use the refresh token to get a new access token
      *
      * @param {string} refreshToken
+		 * @returns {Promise<Response>}
      *
      * @see {@link https://bandcamp.com/developer#refresh_tokens}
      */
@@ -85,6 +88,7 @@ export default class Bandcamp {
    *
    * @param {string} accessToken
    * @param {number} [version] - version of the API
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/account}
    */
@@ -111,6 +115,7 @@ export default class Bandcamp {
    * @param {string} [body.end_time] - (optional) the latest UTC sale time an item could have and still be included in the results (default is the time of the call)
    * @param {string} body.format - (optional) the format you wish to receive results in - either 'csv' or 'json' (default is 'json')
    * @param {number} [version] - version of the API
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
@@ -138,6 +143,7 @@ export default class Bandcamp {
    * @param {string} [body.end_time] - (optional) latest date items you are in interested in would have been added to Bandcamp; defaults to the time of the call
    * @param {array} [body.package_ids] - (optional) an array of package IDs that you wish to filter your results on
    * @param {number} [version] - version of the API
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/merch#get_merch_details}
    */
@@ -162,6 +168,7 @@ export default class Bandcamp {
    * @param {number} [body.band_id] - (optional) Bandcamp ID of your label or the (usually) label on whose behalf you are querying (get this ID from my_bands in the Account API)
    * @param {number} [body.origin_id] - (optional) Bandcamp ID of a specific shipping origin you want to retrieve details for
    * @param {number} [version] - version of the API
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
@@ -192,6 +199,7 @@ export default class Bandcamp {
    * @param {number} [body.origin_id] - (optional) filter orders on a particular shipping origin
    * @param {string} [body.format] - (optional) results format: 'csv' or 'json' (default is 'json')
    * @param {number} [version] - version of the API
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
@@ -221,6 +229,7 @@ export default class Bandcamp {
    * @param {string} [items[].ship_date] - (optional) date of shipment; defaults to current date
    * @param {string} [items[].carrier] - (optional) name of the shipping carrier (displayed to buyer)
    * @param {string} [items[].tracking_code] - (optional) tracking code or number (displayed to buyer)
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
@@ -249,6 +258,7 @@ export default class Bandcamp {
    * @param {number} body.origin_id - (optional) Bandcamp ID of a specific origin which the items you want to update were shipped from
    * @param {boolean} body.email_notifications - (optional) true to send notifications, false to suppress, leave out (or send null) to honor selling band preferences
    * @param {number} [version] - version of the API
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
@@ -276,6 +286,7 @@ export default class Bandcamp {
    * @param {number} items[].quantity_available - the new inventory level you want to set
    * @param {number} items[].origin_id - (optional) Bandcamp ID of a specific origin which the items you want to update were shipped from
    * @param {number} [version] - version of the API
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
@@ -301,6 +312,7 @@ export default class Bandcamp {
    * @param {string} items[].id_type - "p" if id refers to a merch item (package), or "o" an item-option
    * @param {string} items[].sku - the new SKU for the merch item (package) or item-option
    * @param {number} [version] - version of the API
+	 * @returns {Promise<Response>}
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
