@@ -24,7 +24,9 @@ let BANDCAMP_REFRESH_TOKEN;
 test('BANDCAMP_CLIENT_ID', t => {
   const actual = process.env.BANDCAMP_CLIENT_ID;
 
-  if (!isCI) t.log(process.env.BANDCAMP_CLIENT_ID);
+  if (!isCI) {
+		t.log(process.env.BANDCAMP_CLIENT_ID);
+	}
 
   t.not(actual, undefined);
 });
@@ -32,7 +34,9 @@ test('BANDCAMP_CLIENT_ID', t => {
 test('BANDCAMP_CLIENT_SECRET', t => {
   const actual = process.env.BANDCAMP_CLIENT_SECRET;
 
-  if (!isCI) t.log(process.env.BANDCAMP_CLIENT_SECRET);
+  if (!isCI) {
+		t.log(process.env.BANDCAMP_CLIENT_SECRET);
+	}
 
   t.not(actual.length, 0);
 });
@@ -40,7 +44,9 @@ test('BANDCAMP_CLIENT_SECRET', t => {
 test('BANDCAMP_BAND_ID', t => {
   const actual = process.env.BANDCAMP_BAND_ID;
 
-  if (!isCI) t.log(process.env.BANDCAMP_BAND_ID);
+  if (!isCI) {
+		t.log(process.env.BANDCAMP_BAND_ID);
+	}
 
   t.not(actual.length, 0);
 });
@@ -48,7 +54,9 @@ test('BANDCAMP_BAND_ID', t => {
 test('BANDCAMP_SALE_ID', t => {
   const actual = process.env.BANDCAMP_SALE_ID;
 
-  if (!isCI) t.log(process.env.BANDCAMP_SALE_ID);
+  if (!isCI) {
+		t.log(process.env.BANDCAMP_SALE_ID);
+	}
 
   t.not(actual.length, 0);
 });
@@ -56,7 +64,9 @@ test('BANDCAMP_SALE_ID', t => {
 test('BANDCAMP_PACKAGE_IDS', t => {
   const actual = process.env.BANDCAMP_PACKAGE_IDS;
 
-  if (!isCI) t.log(process.env.BANDCAMP_PACKAGE_IDS);
+  if (!isCI) {
+		t.log(process.env.BANDCAMP_PACKAGE_IDS);
+	}
 
   t.not(actual, undefined);
 });
@@ -65,7 +75,10 @@ test('client_credentials', async t => {
   const actual = await api.getClientCredentials();
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.pass();
   }
 
@@ -79,7 +92,10 @@ test('refresh_token', async t => {
   const actual = await api.refreshToken(BANDCAMP_REFRESH_TOKEN);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.pass();
   }
 
@@ -93,9 +109,13 @@ test('my_bands', async t => {
   const actual = await api.getMyBands(BANDCAMP_ACCESS_TOKEN);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.fail();
   }
+
   t.is(actual.bands.length > 0, true);
 });
 
@@ -108,10 +128,14 @@ test('sales_report', async t => {
   const actual = Object.keys(await api.getSalesReport(BANDCAMP_ACCESS_TOKEN, body));
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.fail();
   }
 
+  t.log(actual);
   t.is(actual.length > 0, true);
 });
 
@@ -124,7 +148,10 @@ test('get_merch_details', async t => {
   const actual = await api.getMerchDetails(BANDCAMP_ACCESS_TOKEN, body);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.fail();
   }
 
@@ -139,7 +166,10 @@ test('get_shipping_origin_details', async t => {
   const actual = await api.getShippingOriginDetails(BANDCAMP_ACCESS_TOKEN, body);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.is.skip();
   }
 
@@ -154,7 +184,10 @@ test('get_orders', async t => {
   const actual = await api.getOrders(BANDCAMP_ACCESS_TOKEN, body);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.is.skip();
   }
 
@@ -173,7 +206,10 @@ test('update_shipped', async t => {
   const actual = await api.updateShipped(BANDCAMP_ACCESS_TOKEN, items);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.fail();
   }
 
@@ -190,7 +226,10 @@ test('mark_date_range_as_shipped', async t => {
   const actual = await api.markDateRangeAsShipped(BANDCAMP_ACCESS_TOKEN, body);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.fail();
   }
 
@@ -210,7 +249,10 @@ test('update_quantities', async t => {
   const actual = await api.updateQuantities(BANDCAMP_ACCESS_TOKEN, items);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.fail();
   }
 
@@ -229,7 +271,10 @@ test('update_sku', async t => {
   const actual = await api.updateSKU(BANDCAMP_ACCESS_TOKEN, items);
 
   if (actual.error) {
-    if (!isCI) t.log(actual.message);
+    if (!isCI) {
+			t.log(actual.message);
+		}
+
     return t.fail();
   }
 
