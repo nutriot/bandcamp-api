@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"outDir": "lib",
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "esnext"
+	},
+	"typeRoots": [
+		"./types",
+		"./node_modules/@types"
+	]
+}
