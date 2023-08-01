@@ -37,6 +37,22 @@ test('BANDCAMP_CLIENT_SECRET', t => {
   t.not(actual.length, 0);
 });
 
+test('BANDCAMP_BAND_ID', t => {
+  const actual = process.env.BANDCAMP_BAND_ID;
+
+  if (!isCI) t.log(process.env.BANDCAMP_BAND_ID);
+
+  t.not(actual.length, 0);
+});
+
+test('BANDCAMP_SALE_ID', t => {
+  const actual = process.env.BANDCAMP_SALE_ID;
+
+  if (!isCI) t.log(process.env.BANDCAMP_SALE_ID);
+
+  t.not(actual.length, 0);
+});
+
 test('BANDCAMP_PACKAGE_IDS', t => {
   const actual = process.env.BANDCAMP_PACKAGE_IDS;
 
