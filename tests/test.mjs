@@ -9,7 +9,11 @@ import isCI from 'is-ci';
 // Read .env file
 dotenv.config();
 
-const api = new Bandcamp();
+const api = new Bandcamp({
+	id: process.env.BANDCAMP_CLIENT_ID,
+	secret: process.env.BANDCAMP_CLIENT_SECRET,
+});
+
 const date = new Date();
 const start_time = date.setMonth(date.getMonth() - 18);
 const package_ids = process.env.BANDCAMP_PACKAGE_IDS.split('|');
