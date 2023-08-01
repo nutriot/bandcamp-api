@@ -2,7 +2,7 @@
  * Normalizes the date strings in the request body
  * @param {Object} body - request body
  */
-export function normalizeDate(body: unknown): unknown {
+export function normalizeDate(body: BandcampApi.GetOrdersRequestBody): unknown {
 	if (body['start_time']) {
 		body['start_time'] = new Date(body['start_time']).toISOString().slice(0, 10);
 	}
@@ -19,7 +19,7 @@ export function normalizeDate(body: unknown): unknown {
  *
  * @param {Object} body - response body
  */
-export function normalizeErrors(body: unknown): unknown {
+export function normalizeErrors(body: Response): unknown {
 	return {
 		error: true,
 		message: body['error_description'] || body['error_message'] || body['message']

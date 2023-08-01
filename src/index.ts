@@ -1,18 +1,13 @@
 import { normalizeDate, normalizeErrors, queryStringify } from './helpers';
 
 export default class Bandcamp {
-  CLIENT_ID: string | number;
-  CLIENT_SECRET: string;
+  CLIENT_ID: string | number | undefined;
+  CLIENT_SECRET: string | undefined;
   BANDCAMP_BASE_URL = 'https://bandcamp.com';
 
   constructor(credentials: BandcampApi.Credentials = {}) {
-    this.CLIENT_ID = credentials.id
-      ? credentials.id
-      : process.env.BANDCAMP_CLIENT_ID;
-
-    this.CLIENT_SECRET = credentials.secret
-      ? credentials.secret
-      : process.env.BANDCAMP_CLIENT_SECRET;
+    this.CLIENT_ID = credentials.id || process.env.BANDCAMP_CLIENT_ID;
+    this.CLIENT_SECRET = credentials.secret || process.env.BANDCAMP_CLIENT_SECRET;
 
     if (!this.CLIENT_ID || !this.CLIENT_SECRET) {
       throw new Error('You need to provide both, your Bandcamp client ID and secret')
@@ -109,7 +104,7 @@ export default class Bandcamp {
    * Returns sales report for a label, band, or artist
    *
    * @param {string} accessToken
-   * @param {Object} body
+   * @param {BandcampApi.SalesReportRequestBody} body
    * @param {number} body.band_id - the unique id of the band or label you are calling as or on behalf of
    * @param {number} [body.member_band_id] - (optional) the unique id of a band you wish to filter your results on, if you're calling as or on behalf of a label
    * @param {string} body.start_time -  the earliest UTC sale time an item could have and still be included in the results
@@ -136,7 +131,7 @@ export default class Bandcamp {
    * Lists merchandise a label, band, or artist has available for purchase on Bandcamp
    *
    * @param {string} accessToken
-   * @param {Object} body
+   * @param {BandcampApi.GetMerchDetailsRequestBody} body
    * @param {number} body.band_id - Bandcamp ID of your label or the (usually) label on whose behalf you are querying (get this ID from my_bands in the Account API)
    * @param {number} [body.member_band_id] - (optional) Bandcamp ID of the band on which you wish to filter results (get this ID from my_bands in the Account API)
    * @param {string} body.start_time - earliest date the items you are interested in would have been added to Bandcamp
@@ -163,7 +158,7 @@ export default class Bandcamp {
    * Lists the shipping origins for artists and labels linked to your account on Bandcamp
    *
    * @param {string} accessToken
-   * @param {Object} [body]
+   * @param {BandcampApi.GetShippingOriginRequestBody} [body]
    * @param {number} [body.band_id] - (optional) Bandcamp ID of your label or the (usually) label on whose behalf you are querying (get this ID from my_bands in the Account API)
    * @param {number} [body.origin_id] - (optional) Bandcamp ID of a specific shipping origin you want to retrieve details for
    * @param {number} [version] - version of the API
@@ -187,7 +182,7 @@ export default class Bandcamp {
    * Lists merchandise orders placed with a band or label
    *
    * @param {string} accessToken
-   * @param {Object} body
+   * @param {BandcampApi.GetOrdersRequestBody} body
    * @param {number} body.band_id - Bandcamp ID of your label or the (usually) label on whose behalf you are querying (get this ID from my_bands in the Account API)
    * @param {number} [body.member_band_id] - (optional) Bandcamp ID of band to filter on; defaults to all
    * @param {string} [body.start_time] - (optional) earliest sale dates you're interested in
@@ -217,7 +212,7 @@ export default class Bandcamp {
    * Updates shipped/unshipped status of merchandise orders
    *
    * @param {string} accessToken
-   * @param {Object[]} items - array of payments or sale items to update
+   * @param {BandcampApi.UpdateShippedItems[]} items - array of payments or sale items to update
    * @param {number} items[].id - unique Bandcamp ID of the payment or sale item to update
    * @param {number} items[].id_type - 'p' when id parameter refers to a payment, 's' for sale item
    * @param {boolean} [items[].shipped] - (optional), true to mark as shipped, false to mark as unshipped, missing or null (defaults to true)
@@ -246,7 +241,7 @@ export default class Bandcamp {
    * Updates shipped/unshipped status of merchandise orders within given date range
    *
    * @param {string} accessToken
-   * @param {Object} body - array of payments or sale items to update
+   * @param {BandcampApi.MarkDateRangeAsShippedRequestBody} body - array of payments or sale items to update
    * @param {number} body.id - identifies the label you're calling on behalf of
    * @param {number} body.member_band_id - (optional) identifies the band or artist to filter on
    * @param {string} [body.start_time] - (optional) earliest date in range of orders
@@ -274,7 +269,7 @@ export default class Bandcamp {
    * Updates merch items' stock quantities (inventory levels)
    *
    * @param {string} accessToken
-   * @param {Object[]} items - array of items or item-options to update, where each array item is structured
+   * @param {BandcampApi.UpdateQuantitiesRequestBody[]} items - array of items or item-options to update, where each array item is structured
    * @param {number} items[].id - package (merch item) or option (merch item-option) ID
    * @param {string} items[].id_type - "p" if id is for an item (or package), or "o" for an item-option
    * @param {number} items[].quantity_sold - the number of items that Bandcamp has sold, as reported by get_merch_details
