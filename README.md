@@ -175,7 +175,7 @@ await api.updateShipped(credentials.access_token, [
 		id: 4261657553,
 		id_type: "s",
 		shipped: false,
-	},
+	}
 ]);
 ```
 
@@ -228,7 +228,7 @@ await api.updateQuantities(credentials.access_token, [
 		quantity_available: 45,
 		quantity_sold: 12,
 		origin_id: 12345678,
-	},
+	}
 ]);
 ```
 
@@ -254,7 +254,7 @@ await api.updateSKU(credentials.access_token, [
 		id: 1154611570,
 		id_type: "o",
 		sku: "AFIB-XL",
-	},
+	}
 ]);
 ```
 
