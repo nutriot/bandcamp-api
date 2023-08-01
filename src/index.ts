@@ -14,7 +14,7 @@ export default class Bandcamp {
     this.CLIENT_SECRET = credentials.secret;
   }
 
-  private async post(url: string, data = {}): Promise<unknown> {
+  private async post(url: string, data = {}): Promise<Response> {
     const response = await fetch(url, {
       headers: {
         'Accept': 'application/json',
@@ -34,7 +34,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer#initial_access}
    */
-  public async getClientCredentials(): Promise<unknown> {
+  public async getClientCredentials(): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/oauth_token`;
 
     const body: BandcampApi.ClientCredentialsRequestBody = {
@@ -60,7 +60,7 @@ export default class Bandcamp {
      *
      * @see {@link https://bandcamp.com/developer#refresh_tokens}
      */
-  async refreshToken(refreshToken: string): Promise<unknown> {
+  async refreshToken(refreshToken: string): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/oauth_token`;
 
     const body: BandcampApi.RefreshTokenRequestBody = {
@@ -88,7 +88,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/account}
    */
-  public async getMyBands(accessToken: string, version: string | number = 1): Promise<unknown> {
+  public async getMyBands(accessToken: string, version: string | number = 1): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/account/${version}/my_bands`;
 
     const payload = {
@@ -114,7 +114,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
-  public async getSalesReport(accessToken: string, body: BandcampApi.SalesReportRequestBody, version: string | number = 1): Promise<unknown> {
+  public async getSalesReport(accessToken: string, body: BandcampApi.SalesReportRequestBody, version: string | number = 1): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/sales/${version}/sales_report`;
 
     const payload = {
@@ -141,7 +141,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/merch#get_merch_details}
    */
-  public async getMerchDetails(accessToken: string, body: BandcampApi.GetMerchDetailsRequestBody, version: string | number = 1): Promise<unknown> {
+  public async getMerchDetails(accessToken: string, body: BandcampApi.GetMerchDetailsRequestBody, version: string | number = 1): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/get_merch_details`;
 
     const payload = {
@@ -165,7 +165,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
-  public async getShippingOriginDetails(accessToken: string, body: BandcampApi.GetShippingOriginRequestBody = {}, version: string | number = 1): Promise<unknown> {
+  public async getShippingOriginDetails(accessToken: string, body: BandcampApi.GetShippingOriginRequestBody = {}, version: string | number = 1): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/get_shipping_origin_details`;
 
     const payload = {
@@ -195,7 +195,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
-  public async getOrders(accessToken: string, body: BandcampApi.GetOrdersRequestBody, version = 3): Promise<unknown> {
+  public async getOrders(accessToken: string, body: BandcampApi.GetOrdersRequestBody, version = 3): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/get_orders`;
 
     const payload = {
@@ -224,7 +224,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
-  public async updateShipped(accessToken: string, items: BandcampApi.UpdateShippedItems[], version = 2): Promise<unknown> {
+  public async updateShipped(accessToken: string, items: BandcampApi.UpdateShippedItems[], version = 2): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/update_shipped`;
 
     const payload = {
@@ -252,7 +252,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
-  public async markDateRangeAsShipped(accessToken: string, body: BandcampApi.MarkDateRangeAsShippedRequestBody, version: string | number = 1): Promise<unknown> {
+  public async markDateRangeAsShipped(accessToken: string, body: BandcampApi.MarkDateRangeAsShippedRequestBody, version: string | number = 1): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/mark_date_range_as_shipped`;
 
     const payload = {
@@ -279,7 +279,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
-  public async updateQuantities(accessToken: string, items: BandcampApi.UpdateQuantitiesRequestBody[], version: string | number = 1): Promise<unknown> {
+  public async updateQuantities(accessToken: string, items: BandcampApi.UpdateQuantitiesRequestBody[], version: string | number = 1): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/update_quantities`;
 
     const payload = {
@@ -304,7 +304,7 @@ export default class Bandcamp {
    *
    * @see {@link https://bandcamp.com/developer/sales}
    */
-  public async updateSKU(accessToken: string, items: BandcampApi.UpdateSKURequestBody[], version: string | number = 1): Promise<unknown> {
+  public async updateSKU(accessToken: string, items: BandcampApi.UpdateSKURequestBody[], version: string | number = 1): Promise<Response> {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/update_sku`;
 
     const payload = {
