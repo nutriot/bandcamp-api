@@ -1,20 +1,20 @@
 import { normalizeDate, normalizeErrors, queryStringify } from './helpers';
 
 export default class Bandcamp {
-  CLIENT_ID: string | number | undefined;
-  CLIENT_SECRET: string | undefined;
+  CLIENT_ID: string;
+  CLIENT_SECRET: string;
   BANDCAMP_BASE_URL = 'https://bandcamp.com';
 
-  constructor(credentials: BandcampApi.Credentials = {}) {
-    this.CLIENT_ID = credentials.id || process.env.BANDCAMP_CLIENT_ID;
-    this.CLIENT_SECRET = credentials.secret || process.env.BANDCAMP_CLIENT_SECRET;
-
-    if (!this.CLIENT_ID || !this.CLIENT_SECRET) {
+  constructor(credentials: BandcampApi.Credentials) {
+    if (!credentials.id || !credentials.secret) {
       throw new Error('You need to provide both, your Bandcamp client ID and secret')
     }
+
+		this.CLIENT_ID = String(credentials.id);
+    this.CLIENT_SECRET = credentials.secret;
   }
 
-  private async post(url, data = {}): Promise<unknown> {
+  private async post(url: string, data = {}): Promise<unknown> {
     const response = await fetch(url, {
       headers: {
         'Accept': 'application/json',
@@ -38,9 +38,9 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/oauth_token`;
 
     const body: BandcampApi.ClientCredentialsRequestBody = {
-      'grant_type': 'client_credentials',
-      'client_id': this.CLIENT_ID,
-      'client_secret': this.CLIENT_SECRET
+      grant_type: 'client_credentials',
+      client_id: this.CLIENT_ID,
+      client_secret: this.CLIENT_SECRET
     };
 
     const payload = {
@@ -64,10 +64,10 @@ export default class Bandcamp {
     const requestUrl = `${this.BANDCAMP_BASE_URL}/oauth_token`;
 
     const body: BandcampApi.RefreshTokenRequestBody = {
-      'grant_type': 'client_credentials',
-      'client_id': this.CLIENT_ID,
-      'client_secret': this.CLIENT_SECRET,
-      'refresh_token': refreshToken
+      grant_type: 'client_credentials',
+      client_id: this.CLIENT_ID,
+      client_secret: this.CLIENT_SECRET,
+      refresh_token: refreshToken
     }
 
     const payload = {

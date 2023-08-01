@@ -1,6 +1,6 @@
 /**
  * Normalizes the date strings in the request body
- * @param {Object} body - request body
+ * @param {BandcampApi.GetOrdersRequestBody} body - request body
  */
 export function normalizeDate(body: BandcampApi.GetOrdersRequestBody): unknown {
 	if (body['start_time']) {
@@ -17,10 +17,10 @@ export function normalizeDate(body: BandcampApi.GetOrdersRequestBody): unknown {
 /**
  * Normalizes the error responses from different API calls
  *
- * @param {Object} body - response body
+ * @param {Record<string, string>} body - response body
  */
-export function normalizeErrors(body: Response): unknown {
-	return {
+export function normalizeErrors(body: Record<string, string>): unknown {
+return {
 		error: true,
 		message: body['error_description'] || body['error_message'] || body['message']
 	};
@@ -31,6 +31,6 @@ export function normalizeErrors(body: Response): unknown {
  *
  * @param {object} object
  */
-export function queryStringify(object: unknown): string {
-	return Object.keys(object).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(object[key])}`).join('&');
+export function queryStringify(object: BandcampApi.ClientCredentialsRequestBody | BandcampApi.RefreshTokenRequestBody): string {
+	return Object.entries(object).map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`).join('&');
 }

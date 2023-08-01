@@ -1,10 +1,10 @@
 declare namespace BandcampApi {
-	interface Credentials {
-		id?: number | string;
-		secret?: string;
+	type Credentials = {
+		id: number | string;
+		secret: string;
 	}
 
-	interface ClientCredentialsResponse {
+	type ClientCredentialsResponse = {
 		access_token: string;
 		expires_in: number;
 		ok: boolean;
@@ -14,7 +14,7 @@ declare namespace BandcampApi {
 
 	interface ClientCredentialsRequestBody {
 		grant_type: string;
-		client_id: number | string;
+		client_id: string;
 		client_secret: string;
 	}
 
@@ -22,13 +22,13 @@ declare namespace BandcampApi {
 		refresh_token: string;
 	}
 
-	interface BandsRequestBody {
+	type BandsRequestBody = {
 		grant_type: string;
-		client_id: number | string;
+		client_id: string;
 		client_secret: string;
 	}
 
-	interface SalesReportRequestBody {
+	type SalesReportRequestBody = {
 		band_id: number;
 		member_band_id?: number;
 		start_time: string;
@@ -36,7 +36,7 @@ declare namespace BandcampApi {
 		format?: string;
 	}
 
-	interface GetMerchDetailsRequestBody {
+	type GetMerchDetailsRequestBody = {
 		band_id: number;
 		member_band_id?: number;
 		start_time: string;
@@ -44,7 +44,7 @@ declare namespace BandcampApi {
 		package_ids?: number[];
 	}
 
-	interface GetShippingOriginRequestBody {
+	type GetShippingOriginRequestBody = {
 		band_id?: number;
 		origin_id?: number;
 	}
