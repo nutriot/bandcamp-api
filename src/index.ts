@@ -6,7 +6,7 @@ export default class Bandcamp {
   BANDCAMP_BASE_URL = 'https://bandcamp.com';
 
   constructor(credentials: BandcampApi.Credentials) {
-    if (!credentials.id || !credentials.secret) {
+    if (!credentials?.id || !credentials?.secret) {
       throw new Error('You need to provide both, your Bandcamp client ID and secret')
     }
 
