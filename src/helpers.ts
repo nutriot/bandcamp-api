@@ -1,8 +1,10 @@
+import BandcampApi from "../types";
+
 /**
  * Normalizes the date strings in the request body
  * @param {BandcampApi.GetOrdersRequestBody} body - request body
  */
-export function normalizeDate(body: BandcampApi.GetOrdersRequestBody): unknown {
+export function normalizeDate(body: BandcampApi.GetOrdersRequestBody | BandcampApi.MarkDateRangeAsShippedRequestBody): unknown {
 	if (body['start_time']) {
 		body['start_time'] = new Date(body['start_time']).toISOString().slice(0, 10);
 	}
