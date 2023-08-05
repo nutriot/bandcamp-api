@@ -17,42 +17,57 @@ const sharedSalesMerchProps = {
 	end_time: dateString.optional()
 };
 
-export const requestSchema = {
-	/**
-	 * Account API
-	 * @see {@link https://bandcamp.com/developer/account}
-	 */
-	clientCredentials: z.object(sharedCredentialProps),
+/**
+ * Authorization API
+ * @see {@link https://bandcamp.com/developer}
+ */
+export const clientCredentials = {
+	requestBody: z.object(sharedCredentialProps),
+	response: undefined
+};
 
-	refreshToke: z.object({
+export const refreshToken = {
+	requestBody: z.object({
 		...sharedCredentialProps,
 		refresh_token: z.string()
 	}),
+	response: undefined
+};
 
-	/**
-	 * Sales API
-	 * @see {@link https://bandcamp.com/developer/sales}
-	 */
-	salesReport: z.object({
+/**
+ * Sales API
+ * @see {@link https://bandcamp.com/developer/sales}
+ */
+export const salesReport = {
+	requestBody: z.object({
 		...sharedSalesMerchProps,
 		format: format
 	}),
+	response: undefined
+};
 
-	/**
-	 * Merchant API
-	 * @see {@link https://bandcamp.com/developer/merch}
-	 */
-	getMerchDetails: z.object({
-		...sharedSalesMerchProps,
-		package_ids: z.number().array()
-	}),
+/**
+ * Merchant API
+ * @see {@link https://bandcamp.com/developer/merch}
+ */
+export const getMerchDetails = {
+		requestBody: z.object({
+			...sharedSalesMerchProps,
+			package_ids: z.number().array()
+		}),
+		response: undefined
+};
 
-	getShippingOrigin: z.object({
+export const getShippingOrigin = {
+	requestBody: z.object({
 		band_id: z.number().optional(),
 		origin_id: z.number().optional()
 	}),
+	response: undefined
+};
 
-	getOrders: z.object({
+export const getOrders = {
+	requestBody: z.object({
 		band_id: z.number(),
 		member_band_id: z.number().optional(),
 		start_time: dateString.optional(),
@@ -62,8 +77,11 @@ export const requestSchema = {
 		origin_id: z.number().optional(),
 		format: format
 	}),
+	response: undefined
+};
 
-	updateShippedItems: z.array(
+export const updateShippedItems = {
+	requestBody: z.array(
 		z.object({
 			id: z.number(),
 			id_type: z.union([z.literal('p'), z.literal('s')]),
@@ -73,19 +91,25 @@ export const requestSchema = {
 			ship_date: dateString.optional(),
 			carrier: z.string().optional(),
 			tracking_code: z.tuple([z.number(), z.string()]).optional()
-		})
+		}),
 	),
+	response: undefined
+};
 
-	markDateRangeAsShipped: z.object({
-		band_id: z.number(),
-		member_band_id: z.number().optional(),
-		start_time: dateString.optional(),
-		end_time: dateString,
-		origin_id: z.number().optional(),
-		email_notifications: z.boolean().optional()
-	}),
+export const markDateRangeAsShipped = {
+	requestBody: z.object({
+	band_id: z.number(),
+	member_band_id: z.number().optional(),
+	start_time: dateString.optional(),
+	end_time: dateString,
+	origin_id: z.number().optional(),
+	email_notifications: z.boolean().optional()
+}),
+	response: undefined
+};
 
-	updateQuantities: z.array(
+export const updateQuantities = {
+	requestBody: z.array(
 		z.object({
 			id: z.number(),
 			id_type: idType,
@@ -94,12 +118,16 @@ export const requestSchema = {
 			origin_id: z.number().optional()
 		})
 	),
+	response: undefined
+};
 
-	updateSku: z.array(
+export const updateSku = {
+	requestBody: z.array(
 		z.object({
 			id: z.number(),
 			id_type: idType,
 			sku: z.string()
 		})
-	)
+	),
+	response: undefined
 };

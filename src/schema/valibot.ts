@@ -17,42 +17,57 @@ const sharedSalesMerchProps = {
 	end_time: optional(dateString)
 };
 
-export const requestSchema = {
-	/**
-	 * Account API
-	 * @see {@link https://bandcamp.com/developer/account}
-	 */
-	clientCredentials: object(sharedCredentialProps),
+/**
+ * Authorization API
+ * @see {@link https://bandcamp.com/developer}
+ */
+export const clientCredentials = {
+	requestBody: object(sharedCredentialProps),
+	response: undefined
+};
 
-	refreshToken: object({
+export const refreshToken = {
+	requestBody: object({
 		...sharedCredentialProps,
 		refresh_token: string()
 	}),
+	response: undefined
+};
 
-	/**
-	 * Sales API
-	 * @see {@link https://bandcamp.com/developer/sales}
-	 */
-	salesReport: object({
+/**
+ * Sales API
+ * @see {@link https://bandcamp.com/developer/sales}
+ */
+export const salesReport = {
+	requestBody: object({
 		...sharedSalesMerchProps,
 		format: format
 	}),
+	response: undefined
+};
 
-	/**
-	 * Merchant API
-	 * @see {@link https://bandcamp.com/developer/merch}
-	 */
-	getMerchDetails: object({
+/**
+ * Merchant API
+ * @see {@link https://bandcamp.com/developer/merch}
+ */
+export const getMerchDetails = {
+	requestBody: object({
 		...sharedSalesMerchProps,
 		package_ids: array(number())
 	}),
+	response: undefined
+};
 
-	getShippingOrigin: object({
+export const getShippingOrigin = {
+	requestBody: object({
 		band_id: optional(number()),
 		origin_id: optional(number())
 	}),
+	response: undefined
+};
 
-	getOrders: object({
+	export const getOrders = {
+		requestBody: object({
 		band_id: number(),
 		member_band_id: optional(number()),
 		start_time: optional(dateString),
@@ -62,8 +77,11 @@ export const requestSchema = {
 		origin_id: optional(number()),
 		format: format
 	}),
+	response: undefined
+};
 
-	updateShippedItems: array(
+export const updateShippedItems = {
+	requestBody: array(
 		object({
 			id: number(),
 			id_type: enumType(['p', 's']),
@@ -75,8 +93,11 @@ export const requestSchema = {
 			tracking_code: optional(tuple([number(), string()]))
 		})
 	),
+	response: undefined
+};
 
-	markDateRangeAsShipped: object({
+export const markDateRangeAsShipped = {
+	requestBody: object({
 		band_id: number(),
 		member_band_id: optional(number()),
 		start_time: optional(dateString),
@@ -84,8 +105,11 @@ export const requestSchema = {
 		origin_id: optional(number()),
 		email_notifications: optional(boolean())
 	}),
+	response: undefined
+};
 
-	updateQuantities: array(
+export const updateQuantities = {
+	requestBody: array(
 		object({
 			id: number(),
 			id_type: idType,
@@ -94,12 +118,16 @@ export const requestSchema = {
 			origin_id: optional(number())
 		})
 	),
+	response: undefined
+};
 
-	updateSku: array(
+export const updateSku = {
+	requestBody:  array(
 		object({
 			id: number(),
 			id_type: idType,
 			sku: string()
 		})
-	)
+	),
+	response: undefined
 };
