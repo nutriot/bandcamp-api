@@ -8,9 +8,13 @@
 			"import": "./lib/index.mjs",
 			"require": "./lib/index.js"
 		},
-		"./schema": {
-			"import": "./lib/schema/index.mjs",
-			"require": "./lib/schema/index.js"
+		"./schema/valibot": {
+			"import": "./lib/schema/valibot.mjs",
+			"require": "./lib/schema/valibot.js"
+		},
+		"./schema/zod": {
+			"import": "./lib/schema/zod.mjs",
+			"require": "./lib/schema/zod.js"
 		}
   },
   "types": "./lib",
