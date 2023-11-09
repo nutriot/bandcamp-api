@@ -4,18 +4,18 @@
   "description": "Node.js library for the Bandcamp API",
   "type": "module",
   "exports": {
-		".": {
-			"import": "./lib/index.mjs",
-			"require": "./lib/index.js"
-		},
-		"./schema/valibot": {
-			"import": "./lib/schema/valibot.mjs",
-			"require": "./lib/schema/valibot.js"
-		},
-		"./schema/zod": {
-			"import": "./lib/schema/zod.mjs",
-			"require": "./lib/schema/zod.js"
-		}
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
+    },
+    "./schema/valibot": {
+      "import": "./lib/schema/valibot.js",
+      "require": "./lib/schema/valibot.cjs"
+    },
+    "./schema/zod": {
+      "import": "./lib/schema/zod.js",
+      "require": "./lib/schema/zod.cjs"
+    }
   },
   "types": "./lib",
   "files": [
@@ -38,8 +38,8 @@
     "build:lib": "tsup src/index.ts --format esm,cjs --dts --out-dir lib",
     "build:schema": "tsup src/schema/*.ts --format esm,cjs --dts --out-dir lib/schema",
     "dev": "npm-run-all --parallel dev:*",
-		"dev:lib": "npm run build:lib -- --watch",
-		"dev:schema": "npm run build:schema -- --watch",
+    "dev:lib": "npm run build:lib -- --watch",
+    "dev:schema": "npm run build:schema -- --watch",
     "fix": "eslint --fix ./src",
     "lint:code": "eslint ./src --ignore-path .gitignore",
     "lint": "npm-run-all --parallel lint:*",
@@ -49,7 +49,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "valibot": "^0.10.0",
+    "valibot": "^0.20.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
