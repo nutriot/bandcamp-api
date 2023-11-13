@@ -68,6 +68,8 @@ jobs:
       - name: Run Tests
         run: pnpm run --if-present test
         env:
+          BANDCAMP_BAND_ID: ${{ secrets.BANDCAMP_BAND_ID }}
           BANDCAMP_CLIENT_ID: ${{ secrets.BANDCAMP_CLIENT_ID }}
           BANDCAMP_CLIENT_SECRET: ${{ secrets.BANDCAMP_CLIENT_SECRET }}
           BANDCAMP_PACKAGE_IDS: ${{ secrets.BANDCAMP_PACKAGE_IDS }}
+          BANDCAMP_SALE_ID: ${{ secrets.BANDCAMP_SALE_ID }}
