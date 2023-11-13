@@ -24,6 +24,9 @@
     "LICENSE",
     "README.md"
   ],
+	"engines": {
+		"node": ">=18"
+	},
   "repository": {
     "type": "git",
     "url": "https://github.com/nutriot/bandcamp-api.git"
@@ -34,9 +37,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm-run-all --parallel build:*",
-    "build:lib": "tsup src/index.ts --format esm,cjs --dts --out-dir lib",
-    "build:schema": "tsup src/schema/*.ts --format esm,cjs --dts --out-dir lib/schema",
+    "build": "tsup",
     "dev": "npm-run-all --parallel dev:*",
     "dev:lib": "npm run build:lib -- --watch",
     "dev:schema": "npm run build:schema -- --watch",
