@@ -3,7 +3,13 @@ import { z } from 'zod';
 const currency = z.number().min(0);
 const format = z.union([z.literal('csv'), z.literal('json')]).optional();
 const dateString = z.tuple([z.date(), z.string()]);
-const idType = z.union([z.literal('o'), z.literal('p')])
+const idType = z.union([z.literal('o'), z.literal('p')]);
+const refererUrl = z.string().url().refine(value => {
+	const url = new URL(value);
+	const regex = new RegExp(`^${url.protocol}//`);
+
+	return `${url.href}`.replace(regex, '');
+})
 
 const sharedCredentialProps = {
 	grant_type: z.literal('client_credentials'),
@@ -68,7 +74,10 @@ export const salesReport = {
 		//JSON
 		z.record(z.string().min(1), z.object({
 			date: z.preprocess(date => new Date(String(date)), z.date()),
-			paid_to: z.string(),
+			paid_to: z.tuple([
+				z.string(),
+				z.string().email()
+			]),
 			item_type: z.tuple([z.literal('album'), z.literal('track')]),
 			item_name: z.string(),
 			artist: z.string(),
@@ -96,44 +105,44 @@ export const salesReport = {
 			quantity: z.number().int().gte(0),
 			discount_code: z.tuple([z.null(), z.string()]),
 			sub_total: currency,
-			// seller_tax: null,
-			// marketplace_tax: null,
-			// shipping: null,
-			// ship_from_country_name: null,
+			seller_tax: z.number(),
+			marketplace_tax: z.number(),
+			shipping: z.number(),
+			ship_from_country_name: z.string(), // TODO: literals?
 			transaction_fee: currency,
 			// fee_type: paypal,
 			item_total: currency,
 			amount_you_received: currency,
 			bandcamp_transaction_id: z.number().int(),
-			// paypal_transaction_id: null,
+			paypal_transaction_id: z.string(),
 			net_amount: currency,
-			// package: digital download,
+			package: z.string(),
 			// option: null,
 			item_url: z.string().url(),
-			// catalog_number: null,
+			catalog_number: z.string(),
 			upc: z.string(),
 			isrc: z.string(),
 			buyer_name: z.string(),
 			buyer_email: z.string().email(),
-			// buyer_phone: null,
-			// buyer_note: null,
+			buyer_phone: z.string(),
+			buyer_note: z.string(),
 			ship_to_name: z.string(),
 			ship_to_street: z.string(),
 			ship_to_street_2: z.string(),
-			// ship_to_city: null,
-			// ship_to_state: null,
-			// ship_to_zip: null,
+			ship_to_city: z.string(),
+			ship_to_state: z.string(),
+			ship_to_zip: z.string(),
 			// ship_to_country: null,
 			// ship_to_country_code: null,
-			// ship_date: null,
-			// ship_notes: null,
-			// country: United States,
-			// country_code: US,
-			// region_or_state: IL,
+			ship_date: dateString,
+			ship_notes: z.string(),
+			country: z.string(), // TODO literals?
+			country_code: z.string().length(2), // TODO literals?
+			region_or_state: z.string(),
 			city: z.string(),
 			referer: z.string(),
-			// referer_url: bandcamp.com/app/android/search,
-			// sku: null
+			referer_url: refererUrl,
+			sku: z.string()
 		})
 		),
 		// z.object({
