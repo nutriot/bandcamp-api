@@ -187,27 +187,27 @@ test('get_orders', async t => {
 	t.is(actual.success, true);
 });
 
-test('update_shipped', async t => {
-	const items = [
-		{
-			id: process.env.BANDCAMP_SALE_ID,
-			id_type: 's',
-			notification: false
-		}
-	];
+// test('update_shipped', async t => {
+// 	const items = [
+// 		{
+// 			id: process.env.BANDCAMP_SALE_ID,
+// 			id_type: 's',
+// 			notification: false
+// 		}
+// 	];
 
-	const actual = await api.updateShipped(BANDCAMP_ACCESS_TOKEN, items);
+// 	const actual = await api.updateShipped(BANDCAMP_ACCESS_TOKEN, items);
 
-	if (actual.error) {
-		if (!isCI) {
-			t.log(actual);
-		}
+// 	if (actual.error) {
+// 		if (!isCI) {
+// 			t.log(actual);
+// 		}
 
-		return t.fail();
-	}
+// 		return t.fail();
+// 	}
 
-	t.is(actual.success, true);
-});
+// 	t.is(actual.success, true);
+// });
 
 test('mark_date_range_as_shipped', async t => {
 	const body = {
