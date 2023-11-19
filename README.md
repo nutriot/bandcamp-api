@@ -43,7 +43,7 @@ Returns access token and refresh token. Both expire after one hour.
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.getClientCredentials();
+const { access_token, refresh_token } = await api.getClientCredentials();
 ```
 
 </details>
@@ -58,7 +58,7 @@ Access tokens expire after one hour. You can use the refresh token to get a new 
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.refreshToken(credentials.refresh_token);
+await api.refreshToken(refresh_token);
 ```
 
 </details>
@@ -73,7 +73,7 @@ Returns a list of the bands you have access to (either through artist accounts, 
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.getMyBands(credentials.access_token);
+await api.getMyBands(access_token);
 ```
 
 </details>
@@ -88,7 +88,7 @@ Returns your sales reports for a label, band, or artist
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.getSalesReport(credentials.access_token, {
+await api.getSalesReport(access_token, {
 	band_id: 1633770804,
 	member_band_id: 1925197437,
 	start_time: "2015-12-31 23:59:59",
@@ -108,7 +108,7 @@ Returns merchandise a label, band, or artist has available for purchase on Bandc
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.getMerchDetails(credentials.access_token, {
+await api.getMerchDetails(access_token, {
 	band_id: 1633770804,
 	start_time: "2015-12-31",
 	end_time: "2016-01-01",
@@ -129,7 +129,7 @@ Returns the shipping origins for artists and labels linked to your account on Ba
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.getShippingOriginDetails(credentials.access_token);
+await api.getShippingOriginDetails(access_token);
 ```
 
 </details>
@@ -144,7 +144,7 @@ Returns merchandise orders placed with a band or label
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.getOrders(credentials.access_token, {
+await api.getOrders(access_token, {
 	band_id: 1633770804,
 });
 ```
@@ -161,7 +161,7 @@ Updates shipped/unshipped status of merchandise orders
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.updateShipped(credentials.access_token, [
+await api.updateShipped(access_token, [
 	{
 		id: 1925197437,
 		id_type: "p",
@@ -175,7 +175,7 @@ await api.updateShipped(credentials.access_token, [
 		id: 4261657553,
 		id_type: "s",
 		shipped: false,
-	}
+	},
 ]);
 ```
 
@@ -191,7 +191,7 @@ Updates shipped/unshipped status of merchandise orders within given date range
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.markDateRangeAsShipped(credentials.access_token, {
+await api.markDateRangeAsShipped(access_token, {
 	band_id: 2293737955,
 	member_band_id: 4261657553,
 	start_time: "2015-12-31 23:59:59",
@@ -214,7 +214,7 @@ Updates merch items' stock quantities (inventory levels)
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.updateQuantities(credentials.access_token, [
+await api.updateQuantities(access_token, [
 	{
 		id_type: "p",
 		id: 3387163565,
@@ -228,7 +228,7 @@ await api.updateQuantities(credentials.access_token, [
 		quantity_available: 45,
 		quantity_sold: 12,
 		origin_id: 12345678,
-	}
+	},
 ]);
 ```
 
@@ -244,7 +244,7 @@ Updates merch item stock-keeping unit (SKU)
 <summary><strong>Example</strong></summary>
 
 ```ts
-await api.updateSKU(credentials.access_token, [
+await api.updateSKU(access_token, [
 	{
 		id: 175167691,
 		id_type: "p",
@@ -254,7 +254,7 @@ await api.updateSKU(credentials.access_token, [
 		id: 1154611570,
 		id_type: "o",
 		sku: "AFIB-XL",
-	}
+	},
 ]);
 ```
 
