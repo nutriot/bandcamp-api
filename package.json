@@ -55,11 +55,11 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@ava/typescript": "^3.0.1",
-    "@types/node": "^14.18.33",
+    "@ava/typescript": "^4.1.0",
+    "@types/node": "^18.18.10",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
-    "ava": "^4.3.3",
+    "ava": "^5.3.1",
     "eslint": "^8.54.0",
     "eslint-plugin-json": "^3.1.0",
     "husky": "^8.0.3",
