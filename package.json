@@ -38,9 +38,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsup",
-    "dev": "npm-run-all --parallel dev:*",
-    "dev:lib": "npm run build:lib -- --watch",
-    "dev:schema": "npm run build:schema -- --watch",
+    "dev": "npm run build -- --watch",
     "fix": "eslint --fix ./src",
     "lint:code": "eslint ./src --ignore-path .gitignore",
     "lint:deps": "knip --production",

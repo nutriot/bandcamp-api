@@ -5,7 +5,9 @@ export default defineConfig({
   clean: true,
   dts: true,
   entry: [
-		'src/index.ts'
+		'src/index.ts',
+		'src/schema/valibot.ts',
+		'src/schema/zod.ts',
 	],
   format: ['esm', 'cjs'],
   minify: true,
