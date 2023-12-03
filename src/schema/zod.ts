@@ -4,12 +4,16 @@ const currency = z.number().min(0);
 const format = z.union([z.literal('csv'), z.literal('json')]).optional();
 const dateString = z.tuple([z.date(), z.string()]);
 const idType = z.union([z.literal('o'), z.literal('p')]);
-const refererUrl = z.string().url().refine(value => {
-	const url = new URL(value);
-	const regex = new RegExp(`^${url.protocol}//`);
+const nullOrString = z.tuple([z.null(), z.string()]);
+const refererUrl = z.tuple([
+	z.null(),
+	z.string().url().refine(value => {
+		const url = new URL(value);
+		const regex = new RegExp(`^${url.protocol}//`);
 
-	return `${url.href}`.replace(regex, '');
-})
+		return `${url.href}`.replace(regex, '');
+	})
+]);
 
 const sharedCredentialProps = {
 	grant_type: z.literal('client_credentials'),
@@ -78,7 +82,7 @@ export const salesReport = {
 				z.string(),
 				z.string().email()
 			]),
-			item_type: z.tuple([z.literal('album'), z.literal('track')]),
+			item_type: z.tuple([z.literal('album'), z.literal('package'), z.literal('track')]),
 			item_name: z.string(),
 			artist: z.string(),
 			currency: z.union([
@@ -103,51 +107,51 @@ export const salesReport = {
 			]),
 			item_price: currency,
 			quantity: z.number().int().gte(0),
-			discount_code: z.tuple([z.null(), z.string()]),
+			discount_code: nullOrString,
 			sub_total: currency,
 			seller_tax: z.number(),
 			marketplace_tax: z.number(),
 			shipping: z.number(),
-			ship_from_country_name: z.string(), // TODO: literals?
+			ship_from_country_name: z.string(), // TODO use literals?
 			transaction_fee: currency,
-			// fee_type: paypal,
+			fee_type: z.tuple([z.null(), z.literal('creditcard'), z.literal('paypal')]), // TODO is it really 'creaditcard'?
 			item_total: currency,
 			amount_you_received: currency,
 			bandcamp_transaction_id: z.number().int(),
-			paypal_transaction_id: z.string(),
+			paypal_transaction_id: nullOrString,
 			net_amount: currency,
-			package: z.string(),
-			// option: null,
+			package: z.string(), // TODO: can it be null?
+			option: z.null(), // TODO: what values are there?
 			item_url: z.string().url(),
-			catalog_number: z.string(),
+			catalog_number: nullOrString,
 			upc: z.string(),
 			isrc: z.string(),
 			buyer_name: z.string(),
 			buyer_email: z.string().email(),
-			buyer_phone: z.string(),
-			buyer_note: z.string(),
-			ship_to_name: z.string(),
+			buyer_phone: nullOrString,
+			buyer_note: nullOrString,
+			ship_to_name: nullOrString,
 			ship_to_street: z.string(),
 			ship_to_street_2: z.string(),
-			ship_to_city: z.string(),
-			ship_to_state: z.string(),
-			ship_to_zip: z.string(),
-			// ship_to_country: null,
-			// ship_to_country_code: null,
+			ship_to_city: nullOrString,
+			ship_to_state: nullOrString,
+			ship_to_zip: nullOrString,
+			ship_to_country: nullOrString,
+			ship_to_country_code: nullOrString, // TODO use literals?
 			ship_date: dateString,
-			ship_notes: z.string(),
+			ship_notes: nullOrString,
 			country: z.string(), // TODO literals?
 			country_code: z.string().length(2), // TODO literals?
 			region_or_state: z.string(),
-			city: z.string(),
+			city: nullOrString,
 			referer: z.string(),
 			referer_url: refererUrl,
-			sku: z.string()
+			sku: nullOrString
 		})
 		),
-		// z.object({
-		// 	csv: z.string()
-		// })
+		z.object({
+			csv: z.string()
+		})
 	])
 };
 
