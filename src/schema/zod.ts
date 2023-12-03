@@ -111,7 +111,7 @@ export const salesReport = {
 			sub_total: currency,
 			seller_tax: z.number(),
 			marketplace_tax: z.number(),
-			shipping: z.number(),
+			shipping: z.tuple([z.null(), z.number()]),
 			ship_from_country_name: z.string(), // TODO use literals?
 			transaction_fee: currency,
 			fee_type: z.tuple([z.null(), z.literal('creditcard'), z.literal('paypal')]), // TODO is it really 'creaditcard'?
@@ -120,8 +120,8 @@ export const salesReport = {
 			bandcamp_transaction_id: z.number().int(),
 			paypal_transaction_id: nullOrString,
 			net_amount: currency,
-			package: z.string(), // TODO: can it be null?
-			option: z.null(), // TODO: what values are there?
+			package: z.string(), // TODO can it be null?
+			option: z.null(), // TODO what values are there?
 			item_url: z.string().url(),
 			catalog_number: nullOrString,
 			upc: z.string(),
