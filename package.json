@@ -17,7 +17,7 @@
       "require": "./lib/schema/zod.cjs"
     }
   },
-  "types": "./lib",
+  "types": "./lib/index.d.ts",
   "files": [
     "dist/",
     "types/",
