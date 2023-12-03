@@ -262,6 +262,18 @@ await api.updateSKU(access_token, [
 
 As of version 0.5, this library includes a set of _experimental_ validators for the API. Since these are undocumented at this point, it takes a bit of trial and error to get them right.
 
+#### Valibot
+
+```ts
+import * as validators from "@nutriot/bandcamp-api/validators/valibot";
+```
+
+#### Zod
+
+```ts
+import * as validators from "@nutriot/bandcamp-api/validators/zod";
+```
+
 ## License
 
 This work is licensed under [The MIT License](https://opensource.org/licenses/MIT)
