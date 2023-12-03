@@ -14,8 +14,6 @@
 
 In order to make API calls, you need to [register](https://bandcamp.com/contact?subj=API%20Access) to get client ID and secret.
 
-:warning: It is [not recommended](https://medium.com/@benjamin.botto/secure-access-token-storage-with-single-page-applications-part-1-9536b0021321) to use this library in the front-end, as your credentials will be exposed to the world!
-
 ## Usage
 
 Import and initialize the Bandcamp module
@@ -259,6 +257,10 @@ await api.updateSKU(access_token, [
 ```
 
 </details>
+
+### Validators
+
+As of version 0.5, this library includes a set of _experimental_ validators for the API. Since these are undocumented at this point, it takes a bit of trial and error to get them right.
 
 ## License
 
