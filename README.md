@@ -260,7 +260,7 @@ await api.updateSKU(access_token, [
 
 ### Validators
 
-As of version 0.5, this library includes a set of _experimental_ validators for the API. Since these are undocumented at this point, it takes a bit of trial and error to get them right.
+This library includes a set of _experimental_ validators for the API. Since these are undocumented at this point, it takes a bit of trial and error to get them right.
 
 #### Valibot
 
