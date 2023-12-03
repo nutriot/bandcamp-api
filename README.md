@@ -265,13 +265,13 @@ As of version 0.5, this library includes a set of _experimental_ validators for 
 #### Valibot
 
 ```ts
-import * as validators from "@nutriot/bandcamp-api/validators/valibot";
+import * as validators from "@nutriot/bandcamp-api/schema/valibot";
 ```
 
 #### Zod
 
 ```ts
-import * as validators from "@nutriot/bandcamp-api/validators/zod";
+import * as validators from "@nutriot/bandcamp-api/schema/zod";
 ```
 
 ## License
