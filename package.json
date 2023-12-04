@@ -19,7 +19,7 @@
   },
   "types": "./lib/index.d.ts",
   "files": [
-    "dist/",
+    "lib/",
     "types/",
     "LICENSE",
     "README.md"
