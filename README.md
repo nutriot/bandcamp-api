@@ -21,8 +21,6 @@ Import and initialize the Bandcamp module
 ```ts
 import Bandcamp from "@nutriot/bandcamp-api";
 
-// Alternatively, you can omit client ID and secret and set the
-// environment variables BANDCAMP_CLIENT_ID and BANDCAMP_CLIENT_SECRET
 const api = new Bandcamp({
 	id: "<YOUR_CLIENT_ID>",
 	secret: "<YOUR_CLIENT_SECRET>",
