@@ -1,7 +1,7 @@
 {
   "ignore": [
 		".husky/*",
-		"src/schema/*",
+		"src/schema.ts",
 		"tests/*",
 		"tsup.config.ts"
 	],
@@ -9,7 +9,6 @@
 		"lint-staged"
 	],
 	"ignoreDependencies": [
-		"valibot",
 		"zod"
 	]
 }
