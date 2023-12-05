@@ -258,20 +258,14 @@ await api.updateSKU(access_token, [
 
 ### Validators
 
-This library includes a set of _experimental_ validators for the API. Since the responses are undocumented at this point, the validators are not guaranteed to be correct (PRs are welcome!)
+This library includes an _experimental_ validators for the API. Since the responses are undocumented at this point, the validators are not guaranteed to be correct (PRs are welcome!)
 
 Future versions of this library will create its types from these validator schemas.
-
-#### Valibot
-
-```ts
-import * as validators from "@nutriot/bandcamp-api/schema/valibot";
-```
 
 #### Zod
 
 ```ts
-import * as validators from "@nutriot/bandcamp-api/schema/zod";
+import * as schema from "@nutriot/bandcamp-api/schema";
 ```
 
 ## License

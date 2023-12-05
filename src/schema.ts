@@ -114,7 +114,7 @@ export const salesReport = {
 			shipping: z.tuple([z.null(), z.number()]),
 			ship_from_country_name: z.string(), // TODO use literals?
 			transaction_fee: currency,
-			fee_type: z.tuple([z.null(), z.literal('creditcard'), z.literal('paypal')]), // TODO is it really 'creaditcard'?
+			fee_type: z.tuple([z.null(), z.literal('creditcard'), z.literal('paypal')]), // TODO is it really 'creditcard'?
 			item_total: currency,
 			amount_you_received: currency,
 			bandcamp_transaction_id: z.number().int(),

@@ -8,11 +8,7 @@
       "import": "./lib/index.js",
       "require": "./lib/index.cjs"
     },
-    "./schema/valibot": {
-      "import": "./lib/schema/valibot.js",
-      "require": "./lib/schema/valibot.cjs"
-    },
-    "./schema/zod": {
+    "./schema": {
       "import": "./lib/schema/zod.js",
       "require": "./lib/schema/zod.cjs"
     }
@@ -49,7 +45,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "valibot": "^0.22.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
