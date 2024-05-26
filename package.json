@@ -43,10 +43,12 @@
     "lint:code": "eslint ./src --ignore-path .gitignore",
     "lint:deps": "knip --production",
     "lint": "npm-run-all --parallel lint:*",
-    "start": "npm run dev",
-    "test": "ava ./tests/*.mjs --serial --verbose",
     "prepack": "npm run build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "publish:npm": "np --no-yarn",
+    "publish:jsr": "deno publish",
+    "start": "npm run dev",
+    "test": "ava ./tests/*.mjs --serial --verbose"
   },
   "dependencies": {
     "valibot": "^0.30.0",
@@ -63,6 +65,7 @@
     "is-ci": "^3.0.1",
     "knip": "^5.16.0",
     "lint-staged": "^15.2.5",
+    "np": "^10.0.5",
     "npm-run-all2": "^6.2.0",
     "prettier": "^3.2.5",
     "tslib": "^2.6.2",
