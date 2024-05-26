@@ -5,18 +5,18 @@ on:
     paths:
     - '.github/workflows/**'
     - 'src/**'
-    - 'test/**'
+    - 'tests/**'
     - 'types/**'
     - 'package.json'
     - 'pnpm-lock.yaml'
   pull_request:
-      paths:
-      - '.github/workflows/**'
-      - 'src/**'
-      - 'test/**'
-      - 'types/**'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
+    paths:
+    - '.github/workflows/**'
+    - 'src/**'
+    - 'tesst/**'
+    - 'types/**'
+    - 'package.json'
+    - 'pnpm-lock.yaml'
   workflow_dispatch:
 
 jobs:
