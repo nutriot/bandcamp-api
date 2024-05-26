@@ -34,6 +34,18 @@ jobs:
       with:
         deno-version: v1.x
 
+    - uses: actions/cache@v3
+      name: Setup dependency cache
+      with:
+        path: |
+          ~/.cache/deno
+          ~/.deno/bin
+          ~/.deno/gen
+          ~/.deno/deps
+        key: ${{ runner.os }}-deno-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+            ${{ runner.os }}-deno-store-
+
     - name: Lint Source
       run: deno lint --rules-exclude=no-explicit-any --ignore=node_modules **/*.ts
 
