@@ -34,6 +34,9 @@ jobs:
       with:
         deno-version: v1.x
 
+    - name: Install dependencies
+      run: deno add
+
     - name: Lint Source
       run: deno lint --rules-exclude=no-explicit-any --ignore=node_modules **/*.ts
 
