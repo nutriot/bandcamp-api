@@ -3,8 +3,10 @@
 > Library for interacting with the [Bandcamp API](https://bandcamp.com/developer)
 
 [![License](https://img.shields.io/github/license/nutriot/bandcamp-api?color=blue&style=for-the-badge)](https://github.com/nutriot/bandcamp-api/blob/main/LICENSE)
-[![Version](https://img.shields.io/npm/v/@nutriot/bandcamp-api?style=for-the-badge)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
-[![Build](https://img.shields.io/github/actions/workflow/status/nutriot/bandcamp-api/node.yml?style=for-the-badge)](https://github.com/nutriot/bandcamp-api/actions)
+[![Version: npm](https://img.shields.io/npm/v/@nutriot/bandcamp-api?style=for-the-badge)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
+[![Version: jsr](https://img.shields.io/jsr/v/@nutriot/bandcamp-api?style=for-the-badge)](https://jsr.io/@nutriot/bandcamp-api)
+[![Build: NodeJS](https://img.shields.io/github/actions/workflow/status/nutriot/bandcamp-api/node.yml?logo=nodedotjs&logoColor=white&style=for-the-badge)](https://github.com/nutriot/bandcamp-api/actions)
+[![Build: Deno](https://img.shields.io/github/actions/workflow/status/nutriot/bandcamp-api/deno.yml?logo=deno&logoColor=white&style=for-the-badge)](https://github.com/nutriot/bandcamp-api/actions)
 
 ## Installation
 
