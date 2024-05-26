@@ -1,11 +1,19 @@
 import { normalizeDate, normalizeErrors, queryStringify } from './helpers';
 import type BandcampApi from '../types/index.d';
 
+/**
+ * TypeScript library for interacting with the Bandcamp API.
+ */
 export default class Bandcamp {
 	CLIENT_ID: string;
 	CLIENT_SECRET: string;
 	BANDCAMP_BASE_URL = 'https://bandcamp.com';
 
+	/**
+	 * Constructs a new instance of the Bandcamp API class.
+	 * @param {BandcampApi.Credentials} credentials - The credentials object containing the client ID and secret.
+	 * @throws {Error} If the credentials object does not contain both the client ID and secret.
+	 */
 	constructor(credentials: BandcampApi.Credentials) {
 		if (!credentials?.id || !credentials?.secret) {
 			throw new Error('You need to provide both, your Bandcamp client ID and secret')
@@ -15,7 +23,7 @@ export default class Bandcamp {
 		this.CLIENT_SECRET = credentials.secret;
 	}
 
-	private async post(url: string, data = {}): Promise<Response> {
+	async #post(url: string, data = {}): Promise<Response> {
 		const response = await fetch(url, {
 			headers: {
 				'Accept': 'application/json',
@@ -31,7 +39,7 @@ export default class Bandcamp {
 	}
 
 	/**
-	 * Get access and refresh token
+	 * Get access and refresh token.
 	 *
 	 * @returns {Promise<Response>}
 	 *
@@ -58,11 +66,11 @@ export default class Bandcamp {
 			body: queryStringify(body)
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 		/**
-		 * Access tokens expire in one hour. When this happens you can use the refresh token to get a new access token
+		 * Access tokens expire in one hour. When this happens you can use the refresh token to get a new access token.
 		 *
 		 * @param {string} refreshToken
 		 * @returns {Promise<Response>}
@@ -91,11 +99,11 @@ export default class Bandcamp {
 			body: queryStringify(body)
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * List of the bands you have access to (either through artist accounts, label accounts, or partnerships)
+	 * List of the bands you have access to (either through artist accounts, label accounts, or partnerships).
 	 *
 	 * @param {string} accessToken
 	 * @param {number} [version] - (optional) version of the API
@@ -117,11 +125,11 @@ export default class Bandcamp {
 			}
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * Returns sales report for a label, band, or artist
+	 * Returns sales report for a label, band, or artist.
 	 *
 	 * @param {string} accessToken
 	 * @param {BandcampApi.SalesReportRequestBody} body
@@ -155,11 +163,11 @@ export default class Bandcamp {
 			body: JSON.stringify(body)
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * Lists merchandise a label, band, or artist has available for purchase on Bandcamp
+	 * Lists merchandise a label, band, or artist has available for purchase on Bandcamp.
 	 *
 	 * @param {string} accessToken
 	 * @param {BandcampApi.GetMerchDetailsRequestBody} body
@@ -192,11 +200,11 @@ export default class Bandcamp {
 			body: JSON.stringify(normalizeDate(body))
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * Lists the shipping origins for artists and labels linked to your account on Bandcamp
+	 * Lists the shipping origins for artists and labels linked to your account on Bandcamp.
 	 *
 	 * @param {string} accessToken
 	 * @param {BandcampApi.GetShippingOriginRequestBody} [body]
@@ -222,11 +230,11 @@ export default class Bandcamp {
 			body: JSON.stringify(body)
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * Lists merchandise orders placed with a band or label
+	 * Lists merchandise orders placed with a band or label.
 	 *
 	 * @param {string} accessToken
 	 * @param {BandcampApi.GetOrdersRequestBody} body
@@ -258,11 +266,11 @@ export default class Bandcamp {
 			body: JSON.stringify(normalizeDate(body))
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * Updates shipped/unshipped status of merchandise orders
+	 * Updates shipped/unshipped status of merchandise orders.
 	 *
 	 * @param {string} accessToken
 	 * @param {BandcampApi.UpdateShippedItems[]} items - array of payments or sale items to update
@@ -309,11 +317,11 @@ export default class Bandcamp {
 			body: JSON.stringify({items})
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * Updates shipped/unshipped status of merchandise orders within given date range
+	 * Updates shipped/unshipped status of merchandise orders within given date range.
 	 *
 	 * @param {string} accessToken
 	 * @param {BandcampApi.MarkDateRangeAsShippedRequestBody} body - array of payments or sale items to update
@@ -349,11 +357,11 @@ export default class Bandcamp {
 			body: JSON.stringify(normalizeDate(body))
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * Updates merch items' stock quantities (inventory levels)
+	 * Updates merch items' stock quantities (inventory levels).
 	 *
 	 * @param {string} accessToken
 	 * @param {BandcampApi.UpdateQuantitiesRequestBody[]} items - array of items or item-options to update, where each array item is structured
@@ -397,11 +405,11 @@ export default class Bandcamp {
 			body: JSON.stringify({items})
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 
 	/**
-	 * Updates merch item stock-keeping units (SKU)
+	 * Updates merch item stock-keeping units (SKU).
 	 *
 	 * @param {string} accessToken
 	 * @param {BandcampApi.UpdateSKURequestBody[]} items - array of items or item-options to update, where each array item is structured
@@ -439,6 +447,6 @@ export default class Bandcamp {
 			body: JSON.stringify({items})
 		}
 
-		return await this.post(requestUrl, payload);
+		return await this.#post(requestUrl, payload);
 	}
 }

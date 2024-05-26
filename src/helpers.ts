@@ -1,7 +1,8 @@
 import type BandcampApi from '../types/index.d';
 
 /**
- * Normalizes the date strings in the request body
+ * Normalizes the date strings in the request body.
+ *
  * @param {BandcampApi.GetOrdersRequestBody} body - request body
  */
 export function normalizeDate(body: BandcampApi.GetOrdersRequestBody | BandcampApi.MarkDateRangeAsShippedRequestBody): unknown {
@@ -17,7 +18,7 @@ export function normalizeDate(body: BandcampApi.GetOrdersRequestBody | BandcampA
 }
 
 /**
- * Normalizes the error responses from different API calls
+ * Normalizes the error responses from different API calls.
  *
  * @param {Record<string, string>} body - response body
  */
@@ -29,7 +30,7 @@ return {
 }
 
 /**
- * Simply stringifier for query strings
+ * Simply stringifier for query strings.
  *
  * @param {object} object
  */
