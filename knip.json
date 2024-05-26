@@ -1,12 +1,7 @@
 {
   "ignore": [
-		".husky/*",
-		"src/schema/*",
-		"tests/*",
-		"tsup.config.ts"
-	],
-  "ignoreBinaries": [
-		"lint-staged"
+		"src/schema/valibot.ts",
+		"src/schema/zod.ts"
 	],
 	"ignoreDependencies": [
 		"valibot",
