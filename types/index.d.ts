@@ -95,5 +95,4 @@ declare namespace BandcampApi {
 	}
 }
 
-export = BandcampApi;
-export as namespace BandcampApi;
+export default BandcampApi;

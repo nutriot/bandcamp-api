@@ -1,4 +1,5 @@
 import { normalizeDate, normalizeErrors, queryStringify } from './helpers';
+import type BandcampApi from '../types/index.d';
 
 export default class Bandcamp {
 	CLIENT_ID: string;
