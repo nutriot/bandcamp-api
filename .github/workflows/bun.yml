@@ -3,18 +3,18 @@ name: 'Run tests on Bun'
 on:
   push:
     paths:
-    - '.github/**'
+    - '.github/workflows/**'
+    - 'src/**'
     - 'tests/**'
     - 'types/**'
-    - 'index.ts'
     - 'package.json'
     - 'pnpm-lock.yaml'
   pull_request:
     paths:
-    - '.github/**'
+    - '.github/workflows/**'
+    - 'src/**'
     - 'tests/**'
     - 'types/**'
-    - 'index.ts'
     - 'package.json'
     - 'pnpm-lock.yaml'
   workflow_dispatch:
