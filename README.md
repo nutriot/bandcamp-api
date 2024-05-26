@@ -16,6 +16,9 @@ In order to make API calls, you need to [register](https://bandcamp.com/contact?
 
 ## Usage
 
+> [!CAUTION]  
+> You should never use this library in the browser to avoid leaking your API credentials!
+
 Import and initialize the Bandcamp module
 
 ```ts
@@ -26,9 +29,6 @@ const api = new Bandcamp({
 	secret: "<YOUR_CLIENT_SECRET>",
 });
 ```
-
-> [!CAUTION]  
-> You should never use this library in the browser to avoid leaking your API credentials!
 
 ### Methods
 
