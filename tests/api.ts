@@ -2,7 +2,8 @@ import { env } from 'node:process';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 import Bandcamp from '../src/index';
-import isCI from 'is-ci';
+import isCI from 'is-in-ci';
+import symbols from 'log-symbols';
 
 const api = new Bandcamp({
 	id: String(env.BANDCAMP_CLIENT_ID),
@@ -16,12 +17,26 @@ const package_ids = String(env.BANDCAMP_PACKAGE_IDS).split('|');
 let BANDCAMP_ACCESS_TOKEN: string;
 let BANDCAMP_REFRESH_TOKEN: string;
 
+test.before(() => {
+	if (isCI) {
+		return;
+	}
+
+	console.log(/* let it breathe */);
+	console.group('Environment Variables:');
+	console.info(symbols.info, 'BANDCAMP_CLIENT_ID:', env.BANDCAMP_CLIENT_ID);
+	console.info(symbols.info, 'BANDCAMP_CLIENT_SECRET:', printSecret(String(env.BANDCAMP_CLIENT_SECRET)));
+	console.info(symbols.info, 'BANDCAMP_BAND_ID:', env.BANDCAMP_BAND_ID);
+	console.info(symbols.info, 'BANDCAMP_SALE_ID:', env.BANDCAMP_SALE_ID);
+	console.info(symbols.info, 'BANDCAMP_PACKAGE_IDS:', package_ids);
+	console.groupEnd();
+	console.log(/* let it breathe */);
+	console.log('Running tests:');
+});
+
+
 test('BANDCAMP_CLIENT_ID', () => {
 	const actual = String(env.BANDCAMP_CLIENT_ID);
-
-	if (!isCI) {
-		console.log('BANDCAMP_CLIENT_ID:', env.BANDCAMP_CLIENT_ID);
-	}
 
 	assert.not.equal(actual, undefined);
 });
@@ -29,19 +44,11 @@ test('BANDCAMP_CLIENT_ID', () => {
 test('BANDCAMP_CLIENT_SECRET', () => {
 	const actual = String(env.BANDCAMP_CLIENT_SECRET);
 
-	if (!isCI) {
-		console.log('BANDCAMP_CLIENT_SECRET:', env.BANDCAMP_CLIENT_SECRET);
-	}
-
 	assert.is(actual.length > 0, true);
 });
 
 test('BANDCAMP_BAND_ID', () => {
 	const actual = String(env.BANDCAMP_BAND_ID);
-
-	if (!isCI) {
-		console.log('BANDCAMP_BAND_ID:', env.BANDCAMP_BAND_ID);
-	}
 
 	assert.is(actual.length > 0, true);
 });
@@ -49,19 +56,11 @@ test('BANDCAMP_BAND_ID', () => {
 test('BANDCAMP_SALE_ID', () => {
 	const actual = String(env.BANDCAMP_SALE_ID);
 
-	if (!isCI) {
-		console.log('BANDCAMP_SALE_ID:', env.BANDCAMP_SALE_ID);
-	}
-
 	assert.is(actual.length > 0, true);
 });
 
 test('BANDCAMP_PACKAGE_IDS', () => {
 	const actual = String(env.BANDCAMP_PACKAGE_IDS);
-
-	if (!isCI) {
-		console.log('BANDCAMP_PACKAGE_IDS:', env.BANDCAMP_PACKAGE_IDS);
-	}
 
 	assert.not.equal(actual, undefined);
 });
@@ -254,3 +253,11 @@ test('update_sku', async () => {
 });
 
 test.run();
+
+const printSecret = (input: string) => {
+	if (input.length <= 9) {
+		return input;
+	}
+
+	return `${input.slice(0, 6)}...${input.slice(-6)}`;
+}
