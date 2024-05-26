@@ -38,7 +38,7 @@ jobs:
       run: deno lint --rules-exclude=no-explicit-any --ignore=node_modules **/*.ts
 
     - name: Run Tests
-      run: deno run --allow-all --unstable-sloppy-imports npm:uvu --require tsm tests
+      run: deno run --allow-all --unstable-sloppy-imports npm:uvu tests
       env:
         BANDCAMP_BAND_ID: ${{ secrets.BANDCAMP_BAND_ID }}
         BANDCAMP_CLIENT_ID: ${{ secrets.BANDCAMP_CLIENT_ID }}
