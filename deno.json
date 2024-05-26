@@ -1,0 +1,3 @@
+{
+  "imports": { "tsm": "npm:tsm@^2.3.0", "uvu": "npm:uvu@^0.5.6" }
+}

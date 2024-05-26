@@ -1,0 +1,72 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:uvu@^0.5.6": "npm:uvu@0.5.6"
+    },
+    "npm": {
+      "dequal@2.0.3": {
+        "integrity": "sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==",
+        "dependencies": {}
+      },
+      "diff@5.2.0": {
+        "integrity": "sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==",
+        "dependencies": {}
+      },
+      "kleur@4.1.5": {
+        "integrity": "sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==",
+        "dependencies": {}
+      },
+      "mri@1.2.0": {
+        "integrity": "sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==",
+        "dependencies": {}
+      },
+      "sade@1.8.1": {
+        "integrity": "sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==",
+        "dependencies": {
+          "mri": "mri@1.2.0"
+        }
+      },
+      "uvu@0.5.6": {
+        "integrity": "sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==",
+        "dependencies": {
+          "dequal": "dequal@2.0.3",
+          "diff": "diff@5.2.0",
+          "kleur": "kleur@4.1.5",
+          "sade": "sade@1.8.1"
+        }
+      }
+    }
+  },
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "npm:tsm@^2.3.0",
+      "npm:uvu@^0.5.6"
+    ],
+    "packageJson": {
+      "dependencies": [
+        "npm:@types/node@^18.18.10",
+        "npm:@typescript-eslint/eslint-plugin@^6.13.1",
+        "npm:@typescript-eslint/parser@^6.13.1",
+        "npm:eslint-plugin-json@^3.1.0",
+        "npm:eslint@^8.55.0",
+        "npm:husky@^9.0.11",
+        "npm:is-in-ci@^0.1.0",
+        "npm:knip@^5.16.0",
+        "npm:lint-staged@^15.2.5",
+        "npm:log-symbols@^6.0.0",
+        "npm:np@^10.0.5",
+        "npm:npm-run-all2@^6.2.0",
+        "npm:prettier@^3.2.5",
+        "npm:tslib@^2.6.2",
+        "npm:tsm@^2.3.0",
+        "npm:tsup@^8.0.2",
+        "npm:typescript@^5.4.5",
+        "npm:uvu@^0.5.6",
+        "npm:valibot@^0.30.0",
+        "npm:zod@^3.23.8"
+      ]
+    }
+  }
+}
