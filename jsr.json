@@ -1,0 +1,14 @@
+{
+	"name": "@nutriot/bandcamp-ai",
+	"version": "0.5.1",
+	"exports": "./src/index.ts",
+	"publish": {
+		"include": [
+			"./src/*",
+			"./types/*",
+			"jsr.json",
+			"LICENSE",
+			"README.md"
+		]
+	}
+}
