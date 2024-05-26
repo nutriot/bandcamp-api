@@ -27,8 +27,8 @@ const api = new Bandcamp({
 });
 ```
 
-> [!IMPORTANT]  
-> You should avoid using this library in the browser to avoid your API credentials to leak!
+> [!CAUTION]  
+> You should avoid using this library in the browser to avoid leaking your API credentials!
 
 ### Methods
 
