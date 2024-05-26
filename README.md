@@ -1,6 +1,6 @@
 # @nutriot/bandcamp-api
 
-> Library for the [Bandcamp API](https://bandcamp.com/developer), written in TypeScript
+> Library for interacting with the [Bandcamp API](https://bandcamp.com/developer)
 
 [![License](https://img.shields.io/github/license/nutriot/bandcamp-api?color=blue&style=for-the-badge)](https://github.com/nutriot/bandcamp-api/blob/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@nutriot/bandcamp-api?style=for-the-badge)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
@@ -276,4 +276,4 @@ import * as validators from "@nutriot/bandcamp-api/schema/zod";
 
 ## License
 
-This work is licensed under [The MIT License](https://opensource.org/licenses/MIT)
+This work is licensed under [The MIT License](https://opensource.org/licenses/MIT).

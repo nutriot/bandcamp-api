@@ -1,7 +1,7 @@
 {
   "name": "@nutriot/bandcamp-api",
   "version": "0.5.2",
-  "description": "Node.js library for the Bandcamp API",
+  "description": "TypeScript library for interacting with the Bandcamp API",
   "type": "module",
   "exports": {
     ".": {
