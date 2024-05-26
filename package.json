@@ -46,10 +46,10 @@
     "start": "npm run dev",
     "test": "ava ./tests/*.mjs --serial --verbose",
     "prepack": "npm run build",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
-		"valibot": "^0.30.0",
+    "valibot": "^0.30.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -59,7 +59,7 @@
     "ava": "^5.3.1",
     "eslint": "^8.55.0",
     "eslint-plugin-json": "^3.1.0",
-    "husky": "^8.0.3",
+    "husky": "^9.0.11",
     "is-ci": "^3.0.1",
     "knip": "^3.4.0",
     "lint-staged": "^15.2.5",
