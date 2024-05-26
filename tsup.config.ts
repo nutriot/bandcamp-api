@@ -10,7 +10,6 @@ export default defineConfig({
 		'src/schema/zod.ts',
 	],
   format: ['esm', 'cjs'],
-  minify: true,
 	outDir: 'lib',
   treeshake: 'recommended'
 });
