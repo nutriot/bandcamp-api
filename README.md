@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/github/license/nutriot/bandcamp-api?color=blue&style=for-the-badge)](https://github.com/nutriot/bandcamp-api/blob/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@nutriot/bandcamp-api?style=for-the-badge)](https://www.npmjs.org/package/@nutriot/bandcamp-api)
-[![Build](https://img.shields.io/github/actions/workflow/status/nutriot/bandcamp-api/default.yml?style=for-the-badge)](https://github.com/nutriot/bandcamp-api/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/nutriot/bandcamp-api/node.yml?style=for-the-badge)](https://github.com/nutriot/bandcamp-api/actions)
 
 ## Installation
 

@@ -1,0 +1,41 @@
+name: 'CI: Deno'
+
+on:
+  push:
+    paths:
+    - '.github/workflows/**'
+    - 'src/**'
+    - 'tests/**'
+    - 'types/**'
+    - 'package.json'
+    - 'pnpm-lock.yaml'
+  pull_request:
+    paths:
+    - '.github/workflows/**'
+    - 'src/**'
+    - 'tesst/**'
+    - 'types/**'
+    - 'package.json'
+    - 'pnpm-lock.yaml'
+  workflow_dispatch:
+
+jobs:
+  default:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      with:
+        fetch-depth: 10
+
+    - uses: denoland/setup-deno@041b854f97b325bd60e53e9dc2de9cb9f9ac0cba # v1.1.4
+      with:
+        deno-version: v1.x
+
+    - name: Lint Source
+      run: deno lint  --rules-exclude=no-explicit-any --ignore=node_modules **/*.ts
+
+    - name: Run Tests
+      run: deno run --allow-all --unstable-sloppy-imports npm:uvu --require tsm tests
