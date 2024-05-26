@@ -1,0 +1,50 @@
+name: 'Run tests on Bun'
+
+on:
+  push:
+    paths:
+    - '.github/**'
+    - 'tests/**'
+    - 'types/**'
+    - 'index.ts'
+    - 'package.json'
+    - 'pnpm-lock.yaml'
+  pull_request:
+    paths:
+    - '.github/**'
+    - 'tests/**'
+    - 'types/**'
+    - 'index.ts'
+    - 'package.json'
+    - 'pnpm-lock.yaml'
+  workflow_dispatch:
+
+jobs:
+  default:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      with:
+        fetch-depth: 10
+
+    - uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1.2.1
+    - name: Install dependencies
+      run: bun install --frozen-lockfile --strict-peer-dependencies
+
+    - name: Lint Source
+      run: bun run --if-present lint
+
+    - name: Build Source
+      run: bun run --if-present build
+
+    - name: Run Tests
+      run: bun run --if-present test
+      env:
+        BANDCAMP_BAND_ID: ${{ secrets.BANDCAMP_BAND_ID }}
+        BANDCAMP_CLIENT_ID: ${{ secrets.BANDCAMP_CLIENT_ID }}
+        BANDCAMP_CLIENT_SECRET: ${{ secrets.BANDCAMP_CLIENT_SECRET }}
+        BANDCAMP_PACKAGE_IDS: ${{ secrets.BANDCAMP_PACKAGE_IDS }}
+        BANDCAMP_SALE_ID: ${{ secrets.BANDCAMP_SALE_ID }}
