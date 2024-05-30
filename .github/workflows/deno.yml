@@ -3,7 +3,7 @@ name: 'Run tests on Deno'
 on:
   push:
     paths:
-    - '.github/workflows/**'
+    - '.github/workflows/deno.yml'
     - 'src/**'
     - 'tests/**'
     - 'types/**'
@@ -11,7 +11,7 @@ on:
     - 'pnpm-lock.yaml'
   pull_request:
     paths:
-    - '.github/workflows/**'
+    - '.github/workflows/deno.yml'
     - 'src/**'
     - 'tests/**'
     - 'types/**'

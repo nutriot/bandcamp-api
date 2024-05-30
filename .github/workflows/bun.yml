@@ -3,7 +3,7 @@ name: 'Run tests on Bun'
 on:
   push:
     paths:
-    - '.github/workflows/**'
+    - '.github/workflows/bun.yml'
     - 'src/**'
     - 'tests/**'
     - 'types/**'
@@ -11,7 +11,7 @@ on:
     - 'pnpm-lock.yaml'
   pull_request:
     paths:
-    - '.github/workflows/**'
+    - '.github/workflows/bun.yml'
     - 'src/**'
     - 'tests/**'
     - 'types/**'
