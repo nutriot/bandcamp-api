@@ -35,7 +35,7 @@ jobs:
         deno-version: v1.x
 
     - uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
-      name: Setup Deno cache
+      name: Set up dependency cache
       with:
         path: |
           ~/.deno
@@ -43,7 +43,7 @@ jobs:
         key: ${{ runner.os }}-deno-${{ hashFiles('**/pnpm-lock.yaml') }}
 
     - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
-      name: Setup dependency cache
+      name: Set up dependency cache
       with:
         path: |
           ~/.cache/deno
