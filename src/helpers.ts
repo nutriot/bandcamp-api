@@ -1,4 +1,4 @@
-import type BandcampApi from '../types/index.d';
+import type BandcampApi from '../types/index.d.ts';
 
 /**
  * Normalizes the date strings in the request body.

@@ -1,5 +1,5 @@
-import { normalizeDate, normalizeErrors, queryStringify } from './helpers';
-import type BandcampApi from '../types/index.d';
+import { normalizeDate, normalizeErrors, queryStringify } from './helpers.ts';
+import type BandcampApi from '../types/index.d.ts';
 
 /**
  * TypeScript library for interacting with the Bandcamp API.
