@@ -1,5 +1,5 @@
 {
-  "ignore": [
+	"ignore": [
 		"src/schema/valibot.ts",
 		"src/schema/zod.ts",
 		"tests/api.ts"
