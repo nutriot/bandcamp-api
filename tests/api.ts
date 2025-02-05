@@ -1,7 +1,7 @@
 import { env } from 'node:process';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
-import Bandcamp from '../src/index';
+import Bandcamp from '../src/index.ts';
 import isCI from 'is-in-ci';
 import symbols from 'log-symbols';
 
