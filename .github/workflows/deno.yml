@@ -26,15 +26,15 @@ jobs:
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 8
 
-    - uses: denoland/setup-deno@041b854f97b325bd60e53e9dc2de9cb9f9ac0cba # v1.1.4
+    - uses: denoland/setup-deno@v2
       with:
         deno-version: v1.x
 
-    - uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
+    - uses: actions/cache@v4
       name: Set up dependency cache
       with:
         path: |
@@ -42,7 +42,7 @@ jobs:
           ~/.cache/deno
         key: ${{ runner.os }}-deno-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-    - uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
+    - uses: actions/cache@v4
       name: Set up dependency cache
       with:
         path: |
