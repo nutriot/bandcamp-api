@@ -50,7 +50,7 @@
     "test": "uvu --require tsm tests"
   },
   "dependencies": {
-    "valibot": "^0.30.0",
+    "valibot": "^1.1.0",
     "zod": "^3.24.4"
   },
   "devDependencies": {
@@ -58,11 +58,10 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "concurrently": "^9.1.2",
-    "is-in-ci": "^0.1.0",
+    "is-in-ci": "^1.0.0",
     "knip": "^5.56.0",
     "lefthook": "^1.11.13",
-    "lint-staged": "^15.5.2",
-    "log-symbols": "^6.0.0",
+    "log-symbols": "^7.0.0",
     "np": "^10.2.0",
     "tslib": "^2.8.1",
     "tsm": "^2.3.0",
