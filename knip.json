@@ -1,4 +1,5 @@
 {
 	"ignore": ["src/schema/valibot.ts", "src/schema/zod.ts", "tests/api.ts"],
+	"ignoreBinaries": ["commitlint", "biome"],
 	"ignoreDependencies": ["valibot", "zod"]
 }
