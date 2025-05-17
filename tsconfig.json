@@ -5,6 +5,7 @@
 		"declaration": true,
 		"module": "esnext",
 		"moduleResolution": "node",
+		"noEmit": true,
 		"outDir": "lib",
 		"skipLibCheck": true,
 		"strict": true,
