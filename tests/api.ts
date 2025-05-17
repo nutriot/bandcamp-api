@@ -1,9 +1,9 @@
 import { env } from 'node:process';
+import isCI from 'is-in-ci';
+import symbols from 'log-symbols';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 import Bandcamp from '../src/index.ts';
-import isCI from 'is-in-ci';
-import symbols from 'log-symbols';
 
 const api = new Bandcamp({
 	id: String(env.BANDCAMP_CLIENT_ID),
@@ -33,7 +33,6 @@ test.before(() => {
 	console.log(/* let it breathe */);
 	console.log('Running tests:');
 });
-
 
 test('BANDCAMP_CLIENT_ID', () => {
 	const actual = String(env.BANDCAMP_CLIENT_ID);
@@ -116,7 +115,7 @@ test('my_bands', async () => {
 test('sales_report', async () => {
 	const body = {
 		band_id: env.BANDCAMP_BAND_ID,
-		start_time: start_time
+		start_time: start_time,
 	};
 
 	const actual = await api.getSalesReport(BANDCAMP_ACCESS_TOKEN, body);
@@ -135,7 +134,7 @@ test('sales_report', async () => {
 test('get_merch_details', async () => {
 	const body = {
 		band_id: env.BANDCAMP_BAND_ID,
-		start_time: start_time
+		start_time: start_time,
 	};
 
 	const actual = await api.getMerchDetails(BANDCAMP_ACCESS_TOKEN, body);
@@ -153,7 +152,7 @@ test('get_merch_details', async () => {
 
 test('get_shipping_origin_details', async () => {
 	const body = {
-		band_id: env.BANDCAMP_BAND_ID
+		band_id: env.BANDCAMP_BAND_ID,
 	};
 
 	const actual = await api.getShippingOriginDetails(BANDCAMP_ACCESS_TOKEN, body);
@@ -171,7 +170,7 @@ test('get_shipping_origin_details', async () => {
 
 test('get_orders', async () => {
 	const body = {
-		band_id: env.BANDCAMP_BAND_ID
+		band_id: env.BANDCAMP_BAND_ID,
 	};
 
 	const actual = await api.getOrders(BANDCAMP_ACCESS_TOKEN, body);
@@ -191,7 +190,7 @@ test('mark_date_range_as_shipped', async () => {
 	const body = {
 		band_id: env.BANDCAMP_BAND_ID,
 		end_time: date,
-		email_notifications: false
+		email_notifications: false,
 	};
 
 	const actual = await api.markDateRangeAsShipped(BANDCAMP_ACCESS_TOKEN, body);
@@ -213,8 +212,8 @@ test('update_quantities', async () => {
 			id: package_ids[0],
 			id_type: 'p',
 			quantity_available: 0,
-			quantity_sold: 0
-		}
+			quantity_sold: 0,
+		},
 	];
 
 	const actual = await api.updateQuantities(BANDCAMP_ACCESS_TOKEN, items);
@@ -235,8 +234,8 @@ test('update_sku', async () => {
 		{
 			id: package_ids[0],
 			id_type: 'p',
-			sku: 'TEST_SKU'
-		}
+			sku: 'TEST_SKU',
+		},
 	];
 
 	const actual = await api.updateSKU(BANDCAMP_ACCESS_TOKEN, items);
@@ -260,4 +259,4 @@ const printSecret = (input: string) => {
 	}
 
 	return `${input.slice(0, 6)}...${input.slice(-6)}`;
-}
+};

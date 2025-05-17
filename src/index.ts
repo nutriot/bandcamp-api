@@ -1,5 +1,5 @@
-import { normalizeDate, normalizeErrors, queryStringify } from './helpers.ts';
 import type BandcampApi from '../types/index.d.ts';
+import { normalizeDate, normalizeErrors, queryStringify } from './helpers.ts';
 
 /**
  * TypeScript library for interacting with the Bandcamp API.
@@ -16,7 +16,7 @@ export default class Bandcamp {
 	 */
 	constructor(credentials: BandcampApi.Credentials) {
 		if (!credentials?.id || !credentials?.secret) {
-			throw new Error('You need to provide both, your Bandcamp client ID and secret')
+			throw new Error('You need to provide both, your Bandcamp client ID and secret');
 		}
 
 		this.CLIENT_ID = String(credentials.id);
@@ -26,16 +26,14 @@ export default class Bandcamp {
 	async #post(url: string, data = {}): Promise<Response> {
 		const response = await fetch(url, {
 			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
 			},
 			...data,
 			method: 'POST',
 		});
 
-		return response.ok
-			? await response.json()
-			: normalizeErrors(await response.json())
+		return response.ok ? await response.json() : normalizeErrors(await response.json());
 	}
 
 	/**
@@ -56,32 +54,32 @@ export default class Bandcamp {
 		const body: BandcampApi.ClientCredentialsRequestBody = {
 			grant_type: 'client_credentials',
 			client_id: this.CLIENT_ID,
-			client_secret: this.CLIENT_SECRET
+			client_secret: this.CLIENT_SECRET,
 		};
 
 		const payload = {
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			body: queryStringify(body)
-		}
+			body: queryStringify(body),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
 
-		/**
-		 * Access tokens expire in one hour. When this happens you can use the refresh token to get a new access token.
-		 *
-		 * @param {string} refreshToken
-		 * @returns {Promise<Response>}
-		 *
-		 * @example
-		 * ```ts
-		 * await api.refreshToken(credentials.refresh_token);
-		 * ```
-		 *
-		 * @see {@link https://bandcamp.com/developer#refresh_tokens}
-		 */
+	/**
+	 * Access tokens expire in one hour. When this happens you can use the refresh token to get a new access token.
+	 *
+	 * @param {string} refreshToken
+	 * @returns {Promise<Response>}
+	 *
+	 * @example
+	 * ```ts
+	 * await api.refreshToken(credentials.refresh_token);
+	 * ```
+	 *
+	 * @see {@link https://bandcamp.com/developer#refresh_tokens}
+	 */
 	async refreshToken(refreshToken: string): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/oauth_token`;
 
@@ -89,15 +87,15 @@ export default class Bandcamp {
 			grant_type: 'client_credentials',
 			client_id: this.CLIENT_ID,
 			client_secret: this.CLIENT_SECRET,
-			refresh_token: refreshToken
-		}
+			refresh_token: refreshToken,
+		};
 
 		const payload = {
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			body: queryStringify(body)
-		}
+			body: queryStringify(body),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -121,9 +119,9 @@ export default class Bandcamp {
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
-			}
-		}
+				Authorization: `Bearer ${accessToken}`,
+			},
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -151,17 +149,21 @@ export default class Bandcamp {
 	 * });
 	 *
 	 * @see {@link https://bandcamp.com/developer/sales}
-		* ```
+	 * ```
 	 */
-	public async getSalesReport(accessToken: string, body: BandcampApi.SalesReportRequestBody, version: 1 | 2 | number = 2): Promise<Response> {
+	public async getSalesReport(
+		accessToken: string,
+		body: BandcampApi.SalesReportRequestBody,
+		version: 1 | 2 | number = 2,
+	): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/api/sales/${version}/sales_report`;
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
 			},
-			body: JSON.stringify(body)
-		}
+			body: JSON.stringify(body),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -190,15 +192,19 @@ export default class Bandcamp {
 	 *
 	 * @see {@link https://bandcamp.com/developer/merch#get_merch_details}
 	 */
-	public async getMerchDetails(accessToken: string, body: BandcampApi.GetMerchDetailsRequestBody, version: 1 | number = 1): Promise<Response> {
+	public async getMerchDetails(
+		accessToken: string,
+		body: BandcampApi.GetMerchDetailsRequestBody,
+		version: 1 | number = 1,
+	): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/get_merch_details`;
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
 			},
-			body: JSON.stringify(normalizeDate(body))
-		}
+			body: JSON.stringify(normalizeDate(body)),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -216,19 +222,23 @@ export default class Bandcamp {
 	 * @example
 	 * ```ts
 	 * await api.getShippingOriginDetails(credentials.access_token);
-   * ```
+	 * ```
 	 *
 	 * @see {@link https://bandcamp.com/developer/sales}
 	 */
-	public async getShippingOriginDetails(accessToken: string, body: BandcampApi.GetShippingOriginRequestBody = {}, version: 1 | number = 1): Promise<Response> {
+	public async getShippingOriginDetails(
+		accessToken: string,
+		body: BandcampApi.GetShippingOriginRequestBody = {},
+		version: 1 | number = 1,
+	): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/get_shipping_origin_details`;
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
 			},
-			body: JSON.stringify(body)
-		}
+			body: JSON.stringify(body),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -256,15 +266,19 @@ export default class Bandcamp {
 	 *
 	 * @see {@link https://bandcamp.com/developer/sales}
 	 */
-	public async getOrders(accessToken: string, body: BandcampApi.GetOrdersRequestBody, version: 1 | 2 | 3 | number = 3): Promise<Response> {
+	public async getOrders(
+		accessToken: string,
+		body: BandcampApi.GetOrdersRequestBody,
+		version: 1 | 2 | 3 | number = 3,
+	): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/get_orders`;
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
 			},
-			body: JSON.stringify(normalizeDate(body))
-		}
+			body: JSON.stringify(normalizeDate(body)),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -307,15 +321,19 @@ export default class Bandcamp {
 	 *
 	 * @see {@link https://bandcamp.com/developer/sales}
 	 */
-	public async updateShipped(accessToken: string, items: BandcampApi.UpdateShippedItems[], version: 1 | 2 | number = 2): Promise<Response> {
+	public async updateShipped(
+		accessToken: string,
+		items: BandcampApi.UpdateShippedItems[],
+		version: 1 | 2 | number = 2,
+	): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/update_shipped`;
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
 			},
-			body: JSON.stringify({items})
-		}
+			body: JSON.stringify({ items }),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -347,15 +365,19 @@ export default class Bandcamp {
 	 *
 	 * @see {@link https://bandcamp.com/developer/sales}
 	 */
-	public async markDateRangeAsShipped(accessToken: string, body: BandcampApi.MarkDateRangeAsShippedRequestBody, version: 1 | number = 1): Promise<Response> {
+	public async markDateRangeAsShipped(
+		accessToken: string,
+		body: BandcampApi.MarkDateRangeAsShippedRequestBody,
+		version: 1 | number = 1,
+	): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/mark_date_range_as_shipped`;
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
 			},
-			body: JSON.stringify(normalizeDate(body))
-		}
+			body: JSON.stringify(normalizeDate(body)),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -395,15 +417,19 @@ export default class Bandcamp {
 	 *
 	 * @see {@link https://bandcamp.com/developer/sales}
 	 */
-	public async updateQuantities(accessToken: string, items: BandcampApi.UpdateQuantitiesRequestBody[], version: 1 | number = 1): Promise<Response> {
+	public async updateQuantities(
+		accessToken: string,
+		items: BandcampApi.UpdateQuantitiesRequestBody[],
+		version: 1 | number = 1,
+	): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/update_quantities`;
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
 			},
-			body: JSON.stringify({items})
-		}
+			body: JSON.stringify({ items }),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}
@@ -437,15 +463,19 @@ export default class Bandcamp {
 	 *
 	 * @see {@link https://bandcamp.com/developer/sales}
 	 */
-	public async updateSKU(accessToken: string, items: BandcampApi.UpdateSKURequestBody[], version: 1 | number = 1): Promise<Response> {
+	public async updateSKU(
+		accessToken: string,
+		items: BandcampApi.UpdateSKURequestBody[],
+		version: 1 | number = 1,
+	): Promise<Response> {
 		const requestUrl = `${this.BANDCAMP_BASE_URL}/api/merchorders/${version}/update_sku`;
 
 		const payload = {
 			headers: {
-				'Authorization': `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
 			},
-			body: JSON.stringify({items})
-		}
+			body: JSON.stringify({ items }),
+		};
 
 		return await this.#post(requestUrl, payload);
 	}

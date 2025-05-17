@@ -5,7 +5,7 @@
 	},
 	"files": {
 		"ignore": [
-			"dist/**",
+			"lib/**",
 			"node_modules/**",
 			"package.json",
 			"pnpm-lockfile.yaml"

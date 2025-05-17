@@ -14,9 +14,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"exec": [
-									""
-								],
+								"exec": [""],
 								"type": "text/javascript"
 							}
 						},
@@ -59,13 +57,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/oauth_token",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"oauth_token"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["oauth_token"]
 						}
 					},
 					"response": []
@@ -76,9 +69,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"exec": [
-									""
-								],
+								"exec": [""],
 								"type": "text/javascript"
 							}
 						},
@@ -126,13 +117,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/oauth_token",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"oauth_token"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["oauth_token"]
 						}
 					},
 					"response": []
@@ -144,18 +130,14 @@
 					"listen": "prerequest",
 					"script": {
 						"type": "text/javascript",
-						"exec": [
-							""
-						]
+						"exec": [""]
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
 						"type": "text/javascript",
-						"exec": [
-							""
-						]
+						"exec": [""]
 					}
 				}
 			]
@@ -194,16 +176,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/account/1/my_bands",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"account",
-								"1",
-								"my_bands"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "account", "1", "my_bands"]
 						}
 					},
 					"response": []
@@ -235,16 +209,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/sales/1/sales_report",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"sales",
-								"1",
-								"sales_report"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "sales", "1", "sales_report"]
 						}
 					},
 					"response": []
@@ -260,9 +226,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"exec": [
-									""
-								],
+								"exec": [""],
 								"type": "text/javascript"
 							}
 						}
@@ -287,16 +251,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/1/get_merch_details",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"merchorders",
-								"1",
-								"get_merch_details"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "merchorders", "1", "get_merch_details"]
 						}
 					},
 					"response": []
@@ -323,16 +279,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/3/get_orders",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"merchorders",
-								"3",
-								"get_orders"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "merchorders", "3", "get_orders"]
 						}
 					},
 					"response": []
@@ -359,16 +307,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/1/get_shipping_origin_details",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"merchorders",
-								"1",
-								"get_shipping_origin_details"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "merchorders", "1", "get_shipping_origin_details"]
 						}
 					},
 					"response": []
@@ -395,16 +335,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/2/update_shipped",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"merchorders",
-								"2",
-								"update_shipped"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "merchorders", "2", "update_shipped"]
 						}
 					},
 					"response": []
@@ -431,16 +363,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/2/update_shipped",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"merchorders",
-								"2",
-								"update_shipped"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "merchorders", "2", "update_shipped"]
 						}
 					},
 					"response": []
@@ -467,16 +391,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/2/update_shipped",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"merchorders",
-								"2",
-								"update_shipped"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "merchorders", "2", "update_shipped"]
 						}
 					},
 					"response": []
@@ -503,16 +419,8 @@
 						"url": {
 							"raw": "https://bandcamp.com/api/merchorders/1/update_sku",
 							"protocol": "https",
-							"host": [
-								"bandcamp",
-								"com"
-							],
-							"path": [
-								"api",
-								"merchorders",
-								"1",
-								"update_sku"
-							]
+							"host": ["bandcamp", "com"],
+							"path": ["api", "merchorders", "1", "update_sku"]
 						}
 					},
 					"response": []
@@ -535,9 +443,7 @@
 			"listen": "test",
 			"script": {
 				"type": "text/javascript",
-				"exec": [
-					""
-				]
+				"exec": [""]
 			}
 		}
 	]

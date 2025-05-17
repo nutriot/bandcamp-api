@@ -1,11 +1,4 @@
 {
-	"ignore": [
-		"src/schema/valibot.ts",
-		"src/schema/zod.ts",
-		"tests/api.ts"
-	],
-	"ignoreDependencies": [
-		"valibot",
-		"zod"
-	]
+	"ignore": ["src/schema/valibot.ts", "src/schema/zod.ts", "tests/api.ts"],
+	"ignoreDependencies": ["valibot", "zod"]
 }
