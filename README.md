@@ -10,7 +10,15 @@
 
 ## Installation
 
+On NodeJS or Bun you can install from npm
+
 `npm install --save @nutriot/bandcamp-api`
+
+On Deno you can install using JSR
+
+```shell
+deno add jsr:@nutriot/bandcamp-api
+```
 
 ## Prerequisites
 
