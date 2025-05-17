@@ -41,8 +41,8 @@
     "dev": "npm run build -- --watch",
     "fix": "eslint --fix ./src",
     "lint:code": "biome check --config-path=biome.jsonc --no-errors-on-unmatched --vcs-enabled=true --vcs-use-ignore-file=true",
-		"lint:deps": "knip --production",
-		"lint": "concurrently --prefix '{name}' -c 'blue,green' 'npm:lint:*'",
+    "lint:deps": "knip --production",
+    "lint": "concurrently --prefix '{name}' -c 'blue,green' 'npm:lint:*'",
     "prepack": "npm run build",
     "publish:npm": "np --no-yarn",
     "publish:jsr": "deno publish",
@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "valibot": "^0.30.0",
-    "zod": "^3.23.8"
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -59,15 +59,15 @@
     "@commitlint/config-conventional": "^19.8.1",
     "concurrently": "^9.1.2",
     "is-in-ci": "^0.1.0",
-    "knip": "^5.30.2",
+    "knip": "^5.56.0",
     "lefthook": "^1.11.13",
-    "lint-staged": "^15.2.10",
+    "lint-staged": "^15.5.2",
     "log-symbols": "^6.0.0",
-    "np": "^10.0.7",
-    "tslib": "^2.7.0",
+    "np": "^10.2.0",
+    "tslib": "^2.8.1",
     "tsm": "^2.3.0",
-    "tsup": "^8.2.4",
-    "typescript": "^5.6.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
     "uvu": "^0.5.6"
   },
   "packageManager": "pnpm@9.1.2+sha512.127dc83b9ea10c32be65d22a8efb4a65fb952e8fefbdfded39bdc3c97efc32d31b48b00420df2c1187ace28c921c902f0cb5a134a4d032b8b5295cbfa2c681e2"
